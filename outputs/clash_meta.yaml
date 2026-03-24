@@ -438,21 +438,6 @@ proxies:
   password: IL37892054
   skip-cert-verify: true
   udp: true
-- name: UNK-TROJAN-6-31
-  server: fluent-stingray.crayfish192.xyz
-  port: 443
-  type: trojan
-  password: IL37892054
-  sni: fluent-stingray.crayfish192.xyz
-  skip-cert-verify: true
-  udp: true
-- name: UNK-TROJAN-6-32
-  server: outgoing-ladybird.rooster465.autos
-  port: 443
-  type: trojan
-  password: IL37892054
-  skip-cert-verify: false
-  udp: true
 - name: RU-Moscow-VLESS-6-33
   server: 193.9.49.65
   port: 443
