@@ -1,5 +1,5 @@
 proxies:
-- name: FR-hysteria | 1-1
+- name: FR-HYSTERIA-1-1
   type: hysteria
   server: 2001:bc8:32d7:17b::2
   port: 11000
@@ -11,7 +11,7 @@ proxies:
   protocol: udp
   up: 11 Mbps
   down: 55 Mbps
-- name: FR-tuic | 4-1
+- name: FR-TUIC-4-1
   server: 2001:bc8:32d7:302::16
   port: 34997
   type: tuic
@@ -24,7 +24,7 @@ proxies:
   reduce-rtt: true
   udp-relay-mode: native
   congestion-controller: bbr
-- name: FR-hysteria2 | 5-1
+- name: FR-HYSTERIA2-5-1
   type: hysteria2
   server: 2001:bc8:32d7:302::17
   port: 20088
@@ -36,13 +36,3 @@ proxies:
   protocol: udp
   up: 11 Mbps
   down: 55 Mbps
-- name: FR-VLESS | 1
-  type: vless
-  server: 2001:bc8:32d7:302::13
-  port: 34324
-  uuid: 26c462ba-a90c-4814-9d7c-a629bc0bdb5c
-  network: tcp
-  tls: true
-  servername: dash.cloudflare.com
-  skip-cert-verify: true
-  flow: xtls-rprx-vision
