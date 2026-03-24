@@ -36,7 +36,7 @@ A python script to extract ChromeGo Proxies
 
 - Base64:
 
-  [https://raw.githubusercontent.com/用户名/chrome_py/main/outputs/base64.txt](https://raw.githubusercontent.com/用户名/chrome_py/main/outputs/base64.txt)
+  [https://raw.githubusercontent.com/用户名/chromego_py/main/outputs/base64.txt](https://raw.githubusercontent.com/用户名/chromego_py/main/outputs/base64.txt)
 
 - Proxy urls:
 
