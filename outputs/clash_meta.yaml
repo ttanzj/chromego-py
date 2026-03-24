@@ -275,7 +275,7 @@ proxies:
 - name: Y-US-Providence-HYSTERIA-1
   type: hysteria
   server: 157.254.223.43
-  port: 28000-29000
+  port: 27921
   password: dongtaiwang.com
   auth-str: dongtaiwang.com
   sni: ''
@@ -283,7 +283,7 @@ proxies:
   alpn: h3
   up: 100
   down: 100
-  ports: 27921
+  ports: 28000-29000
 - name: Y-DE-Frankfurt am Main-HYSTERIA-1
   type: hysteria
   server: 2a10:3c80:0:f::2
