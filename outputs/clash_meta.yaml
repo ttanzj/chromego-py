@@ -36,3 +36,17 @@ proxies:
   protocol: udp
   up: 11 Mbps
   down: 55 Mbps
+- name: FR-HYSTERIA2-1-1
+  type: hysteria2
+  server: 2001:bc8:32d7:17b::8
+  port: 22000
+  password: dongtaiwang.com
+  sni: apple.com
+  skip-cert-verify: true
+- name: FR-HYSTERIA2-6-1
+  type: hysteria2
+  server: 2001:bc8:32d7:302::11
+  port: 20088
+  password: dongtaiwang.com
+  sni: apple.com
+  skip-cert-verify: true
