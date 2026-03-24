@@ -1,8 +1,7 @@
 # -*- coding: UTF-8 -*-
 """
-最终稳定修复版 - 彻底解决 Hysteria1/Hysteria2 跳跃端口 + 参数丢失问题
-Y系列 → sources.txt (前缀 Y-)
-Z系列 → sources-j.txt (前缀 Z-)
+最小改动优化版 - 增加对 TUIC、VLESS Reality、Trojan、VMess、SS 等协议的支持
+尽量保持原有结构，只增强 process_json 中的参数提取
 """
 
 import yaml
@@ -37,15 +36,12 @@ def get_location(ip):
         return "UNK"
 
 def make_fingerprint(p):
-    key = f"{p.get('server','')}|{p.get('port','')}|{p.get('type','')}|{p.get('password') or p.get('auth-str','')}"
+    key = f"{p.get('server','')}|{p.get('port','')}|{p.get('type','')}|{p.get('uuid') or p.get('password') or p.get('auth-str','')}"
     return hashlib.md5(key.lower().encode()).hexdigest()
 
 def parse_server_port(srv):
-    """严格分离主端口和跳跃端口"""
     srv = str(srv).strip()
     ports_range = None
-
-    # 处理 "ip:port,range" 或 "ip:port,range" 格式
     if ',' in srv:
         parts = [p.strip() for p in srv.split(',')]
         main_part = parts[0]
@@ -105,6 +101,7 @@ def process_json(data, prefix):
     try:
         content = json.loads(data)
         
+        # ==================== Hysteria / Hysteria2 处理 ====================
         if 'server' in content or 'servers' in content:
             servers = content.get('server') or content.get('servers', [])
             if isinstance(servers, str): servers = [servers]
@@ -118,7 +115,7 @@ def process_json(data, prefix):
                     "name": f"{prefix}{get_location(server)}-{typ.upper()}-{i+1}",
                     "type": typ,
                     "server": server,
-                    "port": main_port,                       # 主端口
+                    "port": main_port,
                     "password": content.get('auth') or content.get('password', content.get('auth_str', '')),
                     "auth-str": content.get('auth_str') or content.get('auth') or content.get('password', ''),
                     "sni": content.get('sni') or content.get('peer') or content.get('server_name', ''),
@@ -126,12 +123,10 @@ def process_json(data, prefix):
                     "alpn": content.get('alpn', 'h3')
                 }
                 
-                # Hysteria1 特有参数
                 if typ == "hysteria":
                     p["up"] = content.get('upmbps') or content.get('up') or 100
                     p["down"] = content.get('downmbps') or content.get('down') or 100
                 
-                # 跳跃端口 - 使用标准字段 "ports"
                 if ports_range:
                     p['ports'] = ports_range
                 elif content.get('server_ports'):
@@ -144,19 +139,65 @@ def process_json(data, prefix):
                     extracted_proxies.append(p)
                     servers_list.append(fp)
 
-        # outbounds 处理（保留）
+        # ==================== 增强 outbounds 处理（TUIC, VLESS Reality, Trojan, VMess, SS 等） ====================
         for ob in content.get('outbounds', []):
             if not isinstance(ob, dict): continue
             proto = (ob.get('protocol') or ob.get('type') or '').lower()
-            if proto not in ('vless', 'vmess', 'trojan', 'ss', 'hysteria', 'hysteria2'): continue
+            
             settings = ob.get('settings', ob)
+            stream = ob.get('streamSettings', {}) or ob.get('transport', {})
             server = settings.get('address') or settings.get('server')
             if not server: continue
             port = int(settings.get('port', 443))
-            p = {"server": server, "port": port, "type": proto}
+            
+            p = {
+                "name": f"{prefix}{get_location(server)}-{proto.upper()}-{len(extracted_proxies)+1}",
+                "type": proto,
+                "server": server,
+                "port": port
+            }
+
             if proto == 'vless':
                 p['uuid'] = settings.get('users', [{}])[0].get('id')
-            p['name'] = f"{prefix}{get_location(server)}-{proto.upper()}-{len(extracted_proxies)+1}"
+                p['flow'] = settings.get('users', [{}])[0].get('flow', '')
+                p['tls'] = stream.get('security', 'none') != 'none'
+                p['servername'] = stream.get('tlsSettings', {}).get('serverName') or stream.get('realitySettings', {}).get('serverName', '')
+                p['client-fingerprint'] = stream.get('realitySettings', {}).get('fingerprint', 'chrome')
+                if stream.get('realitySettings'):
+                    p['reality-opts'] = {
+                        "public-key": stream['realitySettings'].get('publicKey', ''),
+                        "short-id": stream['realitySettings'].get('shortId', '')
+                    }
+
+            elif proto == 'vmess':
+                p['uuid'] = settings.get('users', [{}])[0].get('id')
+                p['alterId'] = settings.get('users', [{}])[0].get('alterId', 0)
+                p['cipher'] = 'auto'
+
+            elif proto == 'trojan':
+                p['password'] = settings.get('password') or settings.get('users', [{}])[0].get('password', '')
+
+            elif proto in ('ss', 'shadowsocks'):
+                p['password'] = settings.get('password')
+                p['cipher'] = settings.get('method', 'aes-256-gcm')
+
+            elif proto == 'tuic':
+                p['uuid'] = settings.get('users', [{}])[0].get('id') or settings.get('uuid')
+                p['password'] = settings.get('password') or settings.get('users', [{}])[0].get('password', '')
+                p['congestion-controller'] = content.get('congestion_controller', 'bbr')
+                p['udp-relay-mode'] = content.get('udp_relay_mode', 'native')
+                p['reduce-rtt'] = True
+                p['request-timeout'] = content.get('request_timeout', 8000)
+
+            # 通用 stream 参数
+            network = stream.get('network', 'tcp')
+            p['network'] = network
+            if network == 'ws':
+                p['ws-opts'] = {
+                    "path": stream.get('wsSettings', {}).get('path', '/'),
+                    "headers": stream.get('wsSettings', {}).get('headers', {})
+                }
+
             fp = make_fingerprint(p)
             if fp not in servers_list:
                 extracted_proxies.append(p)
