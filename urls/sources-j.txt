@@ -1,0 +1,14 @@
+# J系列 - Grok推荐的活跃源
+https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta.yaml
+https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta-2.yaml
+https://raw.githubusercontent.com/free-nodes/clashfree/main/clash.yaml
+https://raw.githubusercontent.com/crashgfw/free-airport-nodes/main/clash_meta.yaml
+https://clash.crossxx.com/sub/clash
+https://raw.githubusercontent.com/asgharkapk/Free-Clash-Meta/main/Sublist/Simple/clash_meta.yaml
+
+https://raw.githubusercontent.com/Argh94/V2RayAutoConfig/refs/heads/main/configs/Hysteria2.txt
+https://raw.githubusercontent.com/10ium/V2ray-Config/main/Splitted-By-Protocol/hysteria2.txt
+
+https://raw.githubusercontent.com/snakem982/proxypool/main/source/singbox.json
+https://raw.githubusercontent.com/Argh94/V2RayAutoConfig/refs/heads/main/configs/ShadowSocks.txt
+https://raw.githubusercontent.com/free-nodes/v2rayfree/main/ss20260324.txt
