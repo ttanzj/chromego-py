@@ -1,8 +1,6 @@
 proxies:
 - server: '[2001:bc8:32d7:17b::2]:11000'
   protocol: udp
-  up_mbps: 11
-  down_mbps: 55
   http:
     listen: 127.0.0.1:1081
     timeout: 250
@@ -11,7 +9,6 @@ proxies:
     listen: 127.0.0.1:1080
     timeout: 250
     disable_udp: false
-  obfs: ''
   auth_str: dongtaiwang.com
   alpn:
   - h3
@@ -100,7 +97,6 @@ proxies:
   port: 34324
   uuid: 26c462ba-a90c-4814-9d7c-a629bc0bdb5c
   flow: xtls-rprx-vision
-  encryption: none
   network: tcp
   tls: true
   servername: dash.cloudflare.com
@@ -151,8 +147,6 @@ proxies:
 - type: hysteria
   server: 5.83.129.90
   server_port: 54177
-  up_mbps: 11
-  down_mbps: 55
   auth_str: dongtaiwang.com
   tls:
     enabled: true
@@ -172,8 +166,6 @@ proxies:
 - type: hysteria
   server: 45.150.65.154
   server_port: 47119
-  up_mbps: 11
-  down_mbps: 55
   auth_str: dongtaiwang.com
   tls:
     enabled: true
@@ -317,7 +309,6 @@ proxies:
       up: 50
       down: 100
   skip-cert-verify: true
-  flow: xtls-rprx-vision
   brutal-opts:
     enabled: true
     up: 50
@@ -348,7 +339,6 @@ proxies:
       up: 50
       down: 100
   skip-cert-verify: true
-  flow: xtls-rprx-vision
   brutal-opts:
     enabled: true
     up: 50
@@ -379,7 +369,6 @@ proxies:
       up: 50
       down: 100
   skip-cert-verify: true
-  flow: xtls-rprx-vision
   brutal-opts:
     enabled: true
     up: 50
@@ -450,8 +439,6 @@ proxies:
   udp: true
 - server: 5.83.129.153:20088
   protocol: udp
-  up_mbps: 11
-  down_mbps: 55
   http:
     listen: 127.0.0.1:1081
     timeout: 250
@@ -460,7 +447,6 @@ proxies:
     listen: 127.0.0.1:1080
     timeout: 250
     disable_udp: false
-  obfs: ''
   auth_str: dongtaiwang.com
   alpn:
   - h3
@@ -486,8 +472,6 @@ proxies:
   name: Y-UNK-UDP-1
 - server: 157.254.223.44:20833
   protocol: udp
-  up_mbps: 11
-  down_mbps: 55
   http:
     listen: 127.0.0.1:1081
     timeout: 250
@@ -496,7 +480,6 @@ proxies:
     listen: 127.0.0.1:1080
     timeout: 250
     disable_udp: false
-  obfs: ''
   auth_str: dongtaiwang.com
   alpn:
   - h3
@@ -522,8 +505,6 @@ proxies:
   name: Y-UNK-UDP-1
 - server: 5.83.129.90:54177
   protocol: udp
-  up_mbps: 11
-  down_mbps: 55
   http:
     listen: 127.0.0.1:1081
     timeout: 300
@@ -532,7 +513,6 @@ proxies:
     listen: 127.0.0.1:1080
     timeout: 300
     disable_udp: false
-  obfs: ''
   auth_str: dongtaiwang.com
   alpn:
   - h3
@@ -556,7 +536,7 @@ proxies:
   udp: true
   type: udp
   name: Y-UNK-UDP-1
-- server: 157.254.223.43:27921,28000-29000
+- server: 157.254.223.43
   auth: dongtaiwang.com
   bandwidth:
     up: 11 mbps
@@ -574,14 +554,15 @@ proxies:
   transport:
     udp:
       hopInterval: 30s
-  port: 443
+  port: 27921
   password: dongtaiwang.com
   auth_str: dongtaiwang.com
   skip-cert-verify: true
   udp: true
+  ports: 28000-29000
   alpn:
   - h3
-  name: Y-UNK-UNK-1
+  name: Y-US-Providence-UNK-1
 - server: '[2a10:3c80:0:f::2]:39463'
   auth: VNws548Lj/fDRk58HE6dKAcTNpb8+iIk+ycqKEBNG/U=
   bandwidth:
@@ -671,7 +652,6 @@ proxies:
   port: 44965
   uuid: b0a4c3bf-f170-46e2-8cef-7ed2fc2e6748
   flow: xtls-rprx-vision
-  encryption: mlkem768x25519plus.native.0rtt.P2iHYoi7bDgaGESPBPEZqEQSgIhntSRvsNeC0SuqaoxPTRBrG3o3uBzJKowbXhRBQPUCc3rGOEGxJii47toBFcVnbKMmH8YvNgVXUoZQALFgM4e8dhp4SCMJSFYgf1UpFRsl_LYRl-EMYqCtJFySBnYs8cAxc2A90hGsurbHKeGSFnUIoyF-HcktRbKd67vPPplW-WuucdMVA2EH1mZOFau6zjynVSDEGPhtUHSUyWdNA4p56DpwABG97nYqK_doisGI1cOTEbkTgFkytLawdxoIBjytudS4ZxelvRgwgdSDR5N2xhAA47gZjHlrnAKL92p-SuwTlIq9LLSawesTHcCFtmW1b2mKIBu3UIy56IwoakmxBPoqu9JZNmGyDQu0YUTCgCe9YQWKhlzGTAiBpSRWg9mb4_CgW0uxsCyOg-Fu1Exf4DBKnoCV4RFn43TJpUObCwhJzLRSWVHEmVUt9cYzXgIwLQCeU3u4NKRKlSIfSzOPgkvJg5p6k3iBIkcf-bKQbrC7Wcyi7Lmuxyiq-1Bdz9FAnKZAFUs82DFb2HOSi2sgeJSlBxawklFm0YRo-0QuwkBXC9tbTfJNlDQpTipWh-pkH6E1RUq8UvaqB4SuRWsdWUxVbiYSDgmuPYBt7gVXVQKIOZp5s7Sc5qW7EEWBYTi4qbSeDXPDhZBDwWNqpMxL1uYFygYpg0tEfabBURIH2IRMFYqfn4aFSYAdh4ZbQPdnBxuqmjp4WCkIXTKQbkxuxXW1h7Ck1NGHC8whIumjxmiU-0aBAOxApKcq1aRzCgmswDEd6jYaXTdtpwdcuKOuJnC9AgY1AXIeVySqoKyBrsmvCLeoe0mjs1FMDRKQB4i_qpGZXPAM4Otv7JtyK0wUH9BBXoKd7cdW0je6A7m5mYVv1DBwIuIVp8mViPMWW4YyxBeaWIRH_CGfaJa7Yhp2EWzN1YedATVoHpWr8lMOpCG9opcR8lNpOOZmXzKerusZ6SrF0GOr-tJMPOSHzFN9sgPPEuuh8deUSBJGf2EYPzIbXVV0KciH86EgzAOGipBF0dRmCGoMxjGLruhhA5tUHqsvGkNC4OI4wPEY0vGOGqVFjmwdQac8h8LGFWA333Olg8zOr4nPeNh7rDF_wic6xMkiKncHUZMnB_OQQCY8VzRhN3p3ppHLSugU6Ux1_-F5YuZ3Mcq15Uaz7QaXOsk-a-mQwAZCURCKyRHM0Yllk-OhdiMQsVVSdWEIHmUZ_cg5d7ZjmXNlMFYCDAAQciISiQSRpldlRxATD0sRyEqVI8VbosaFogZnvjlDpUOWZuCCMlRxbhUZGaRPJKMWH5sHvgxo5SA2qtuvmlZjdWCvHtrFoWZBLeOMJGfKfmgEeUp6cYuKxRHILxKuEzsiiycNAmB-pkKov3CKHTExSusaLgkv1HVC95ekJkKchMq2VwKtt0Yw7WZawOHKwRxysjs1ooW5jWhOAdZ9nOZ-q4VOT7ZKuxd85nhKNFGrbMaX30mvPSFeCvWKjkofCKaV26eBcCJYYxwbLms1MmeyQ-l2_BMajHkSzm_ZXgcFktII5itsyrWvKur1mshzhiE
   network: xhttp
   tls: true
   servername: www.cloudflare.com
@@ -700,7 +680,6 @@ proxies:
   port: 24089
   uuid: 0b138cbd-73f2-482c-ac69-c4b2ebeb891d
   flow: xtls-rprx-vision
-  encryption: mlkem768x25519plus.native.0rtt.6CWgfTECvPCYcwQAV5DL6jVRvKfD83J1Djq2q9DIh8y7d4vP90AJFng38eQl8MxZcquOmhnFWYGW4ifEG-pNiMVQWBZiVrUgezGQnZEY33kktFc1ffaIV1OBdOqTgmWKrqE5e0M3WTiqjneY7yInWNqvUYmyfIsAJpO3NVaD5egKoeQ_RGFpoLAOf9M9QpFoLpqQMYcvGAFyiRZwBzwecHMiE4XC52G2bYA3IwvDYGtG3RPIYfE0NyRt9ojLjgBdgXewJXp8dMYimqZugVQ8n0qSRjGvqRwOTAuPAujEoKkREcOWShBg9XkWeWhB7hqdluk0VQWJXvxrygmMByAGiRAe5AakWBZlBNoVJvQZtWVNtwxq5JNV2HufvOmHS-QpzUl3zlRXuTSsLuiHkyUUZLWBJsu_JmSz1KdjF7a45iEhUSqP2InAv3YQc0ZTqiN4eZd0ScIRrORQvHIix2yToXHOZ5dN0sERUwrK5rkOf8ujgmMDSuo9MgQYiCa33bkO3oc1UEK-mHqxyxOzEmUWTeZmqJphkdxc8dc4OfiXhUJrwvHMEChqjvwRA9EmLxhucGHIuxIsgsbNN_Qw3_DCR4eMdtsUD7dAxbAw9aS37QC2B6wcPIEC-FkauDIFJLHIO-w5RzlelNBr5bdL7Fce67RrPLKkrjJxEqhEQxZdhIZltPAFXODEACIKhzIvlYefkikk2vCMZfm48SpI74RN21lm-crMpfNdUsOE0eI4sZyvSGe9cVTKAdgN1YgaqFoFmhQ1jrJsyWpeh3wZMAqScZqipMkddzQlynLBW-Jo4TmHKld-5eBdKtMwScQKG2sAZNs6knW8FxpT-5OfLAgGAne9URZCxSwwgisvpWk5_YCljtvPh_qw4IQa6CG4yocifZFzfzTAduNlmmKM6HNrSNhBhcOe1aBk9OWluqPGPzx8hol_4lojaYw2gZUEPgzLS-BpRAc-NIkGVldmn2XKnUF6IJRuPIZIdkK7hhddYufN1KObJySmTDkJ0EE3DJvPmdcdOCFJbdCl5pqnORChB3p1_Edd6oYohZk-dxUUBFgvyYdvFwGu_zlAVClOWTRIilgjH5OBEftgURyb4sZrWvgaJkxnv0ckXDmL1DkHh1yT6mi91Opu30sWIssSKaMVGcuhTFFyyfxETLN38-GVfRwf19FJSPs0HsRQJkRFnSx8CDcvmNarZzBR_JEDOsYqWLMQC5FqnZyQJLmHnuJ3OgcflTrCc9m1DIGbvZq_Z5ikQZSq2Ua469OSW1E1m-s4k5q0Y5RXppuf0Np2vykcLFZKLmmU5_ismTQHrJSnysQchxR68yEor8sXgmRDNHCC1GNKc5O1WmKKXbEXJyKo3vIxTDyHTUUpK5ma5LZ51UUEE8N-LPNlEtt2HIsOBvBrXflYrqOP1mZZDjYEJvSMhPp8Q7SyhWLFXqGQD6hBSYw8Q0V-Cog8FtpVV5EsGRFbt5iFCNwqfTwZMzE4ZEs3rumf3IO2P4nBfpuGjEw6pNZZyMtDbTq_pMlxzQI_N2NwBecyINeQ0RqzGM8De7RJpdu18NftXZyhrymcVpV-2L0
   network: xhttp
   tls: true
   servername: www.microsoft.com
@@ -729,7 +708,6 @@ proxies:
   port: 54582
   uuid: 5cfc52bc-e701-4160-89df-930a0c040576
   flow: xtls-rprx-vision
-  encryption: mlkem768x25519plus.native.0rtt.0Rs8kQdBBMcc2SywqxkhzNVVzyIt_OZaYDNplvTPJKOwxAumLyogdAmy-lLJdlpIerxoMMZs2dlOCoI2H_igvKVg-1lc8Pge2EY-eki2tMPCzEhec7hFnVoDRydhygEXaAaebBpipjMntKVHqLJzwKomw5d-O0kAGaiF5nYPi-SU3NEBAXUPEWi9nMZeOEYPzzthXAcIVWw7yDlrGrOJQSVRyNmcUppT9hAwoNMPe2O5z0IN3rOdd7c3soKJ8oU6gwY38ynGbMEXGQqIBRWeYPYaptddWUZP28tus9xTwKQkIfeWWjsGOZcqGJMRRPevlIxRbfcAAJuCeTiz4yErDFsoMBYdzQl3BzIIcimWDEQIXZJCR6yyLSyJj8Fva7AgcAeg5BZs6_ZQdQFZfZpwjrwmp1kbdakCf-AzR9zBrOtR35IElzgBsgavbgZVY4B1THZ7DvFQVAq3hupm6_gaAaxg42qsleKyzPEs00VY-8DLRjauukNzTigjhfqom8liJnp8aALEnXhu7rdPIWuM91WEz4uTmbxBvARzuUAe7LceQtqiaHmebrp8N0mOKsSyh2PDVAmbWtjHCXJeDhhCMPUYXuiwUVICeUZV1TZxjmZ_xFFL8JZ8vAtewzs9AkiLXJaHNdIBbQRW5qx5BQfMM5vKjYhiXCxJugxu0zq57ksRxsF68oSW0jWbHXaF9EY91ABSZystAjitddC6QcGOUtqn6giKSVs2RXwEeNqZEsEELahYcPtM_PmTlXG-3pFfXalmcpC6bcVl14JLgkykbEtDy3qhBNaUa4osqDu4g8EgRVVuJlCFEcOW-qsQZedzkuhXa2UrUSgNBfVMYXCq16iiD6WKyVVww8CKj_WsPlyNrKIdu8RKENo_HZHN5gPEkgIGWvdpUVyJVbMHlGQ8wVKFDMgn3TyCmCx2_dXM0_eQDqjI3mXAonbAoFttwDhfbpcK4FjPWSkHZrMfAQU1QeodFxqBvBe8MMw1bLSu_mE8beORjEpmtWFr08O0zeUqBkKdOBwahQnB7mBx17JnjYSH0KZT2KF29SiBudHKz7mbThIxhglQH1hSfmSWs0k_d1uCR9Qvylsns9a3j4uwcvUFtZam7iVk2HxG-vMOihIYYomSALwNU0IN01Z3qddbW5uDdtIE0yA2fVVOxjMKVMeYybtarviaCdfNmvyJ4MrJUzoS82cp6TuOYgMZ8hosGMOH1xTMCZIMc9mf4UCRJqA3cRMH0PFj_ugQ62ohDld1dyZADdQx2igtUoYnjLKcIHVdTOp36TqaofugLKwF_aJSUmhi_Kheaju28kZskBaebUqT9VPBqcqYozdvXeeG8hUT6eiMAKSML4jHIJeYOpjOHhYNUEm9b4ATJOwstyQgQmE-P3teIQeYYRcimLpjCTczISEQJcUg68e3CgA8GCoLIaZVsmYKDMxbPJu7bWygU5bBH0Gc6sqf7uNy3kI0nEtAGNAUs6y9TFROQ2BgNeSMucRVNXZ1ePpJs8mx_xRn2ODAn0hImPlLiuOHniCPE_zni6TSyL8Typ11OvyVBIrIrAxWZwREOPs5lXV17t8
   network: xhttp
   tls: true
   servername: apple.com
@@ -757,8 +735,6 @@ proxies:
   server: 2a14:7584:d097::a
   port: 11330
   uuid: 53d74aab-6471-4c1b-ace7-fac837d1bfbd
-  flow: xtls-rprx-vision
-  encryption: none
   network: xhttp
   tls: true
   servername: toarumajutsunoindex.fandom.com
