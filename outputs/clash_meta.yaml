@@ -1,45 +1,125 @@
 proxies:
+- tag: proxy
+  protocol: vless
+  settings:
+    vnext:
+    - address: 2001:bc8:32d7:302::13
+      port: 34324
+      users:
+      - id: 26c462ba-a90c-4814-9d7c-a629bc0bdb5c
+        alterId: 0
+        email: t@t.tt
+        security: auto
+        encryption: none
+        flow: xtls-rprx-vision
+  streamSettings:
+    network: tcp
+    security: reality
+    realitySettings:
+      serverName: dash.cloudflare.com
+      fingerprint: chrome
+      show: false
+      publicKey: pHn5CHa2P6-lNBIkTOI3zJQN19jfNFkXxGFuyefpP0M
+      shortId: ''
+      spiderX: ''
+  mux:
+    enabled: false
+    concurrency: -1
+  skip-cert-verify: true
+  udp: true
+  type: vless
+  server: null
+  port: 443
+  password: null
+  uuid: null
+  name: Y-UNK-VLESS-1
+- tag: proxy
+  protocol: vmess
+  settings:
+    vnext:
+    - address: 104.21.238.35
+      port: 2086
+      users:
+      - id: ee420fda-efb7-48a8-9249-8987e36ebd9e
+        alterId: 0
+        email: t@t.tt
+        security: auto
+  streamSettings:
+    network: ws
+    wsSettings:
+      path: github.com/Alvin9999
+      headers:
+        Host: ip29.9447609.xyz
+  mux:
+    enabled: false
+    concurrency: -1
+  skip-cert-verify: true
+  udp: true
+  type: vmess
+  server: null
+  port: 443
+  password: null
+  uuid: null
+  name: Y-UNK-VMESS-1
+- type: hysteria
+  tag: https://github.com/Alvin9999-newpac/fanqiang/wiki
+  server: 5.83.129.90
+  server_port: 54177
+  up_mbps: 11
+  down_mbps: 55
+  auth_str: dongtaiwang.com
+  tls:
+    enabled: true
+    insecure: true
+    server_name: bing.com
+    alpn:
+    - h3
+  alpn:
+  - h3
+  up: 100 Mbps
+  down: 100 Mbps
+  skip-cert-verify: true
+  udp: true
+  port: 54177
+  password: null
+  uuid: null
+  name: Y-DE-HYSTERIA-1
+- type: hysteria
+  tag: dongtaiwang.com
+  server: 45.150.65.154
+  server_port: 47119
+  up_mbps: 11
+  down_mbps: 55
+  auth_str: dongtaiwang.com
+  tls:
+    enabled: true
+    insecure: true
+    server_name: bing.com
+    alpn:
+    - h3
+  alpn:
+  - h3
+  up: 100 Mbps
+  down: 100 Mbps
+  skip-cert-verify: true
+  udp: true
+  port: 47119
+  password: null
+  uuid: null
+  name: Y-US-Secaucus-HYSTERIA-1
 - name: Y-FR-HYSTERIA-1
   type: hysteria
   server: 2001:bc8:32d7:17b::2
   port: 11000
-  password: dongtaiwang.com
-  auth-str: dongtaiwang.com
   sni: apple.com
   skip-cert-verify: true
-  alpn: h3
-  up: 100
-  down: 100
-- name: Y-FR-HYSTERIA-1
-  type: hysteria
-  server: 2001:bc8:32d7:17b::8
-  port: 22000
-  password: dongtaiwang.com
-  auth-str: dongtaiwang.com
-  sni: ''
-  skip-cert-verify: true
-  alpn: h3
-  up: 100
-  down: 100
-- name: Y-FR-HYSTERIA-1
-  type: hysteria
-  server: 2001:bc8:32d7:302::11
-  port: 20088
-  password: dongtaiwang.com
-  auth-str: dongtaiwang.com
-  sni: ''
-  skip-cert-verify: true
-  alpn: h3
-  up: 100
-  down: 100
-- server: 5.83.129.90
-  port: 443
-  type: hysteria
-  name: Y-DE-HYSTERIA-4
-- server: 45.150.65.154
-  port: 443
-  type: hysteria
-  name: Y-US-Secaucus-HYSTERIA-5
+  alpn:
+  - h3
+  protocol: udp
+  up: 11 Mbps Mbps
+  down: 55 Mbps Mbps
+  auth_str: dongtaiwang.com
+  udp: true
 - name: Y-FR-TUIC-1
   server: 2001:bc8:32d7:302::16
   port: 34997
@@ -53,42 +133,46 @@ proxies:
   reduce-rtt: true
   udp-relay-mode: native
   congestion-controller: bbr
+  udp: true
 - name: Y-FR-HYSTERIA2-1
   type: hysteria2
   server: 2001:bc8:32d7:302::17
   port: 20088
-  password: dongtaiwang.com
   sni: apple.com
   skip-cert-verify: true
   alpn:
   - h3
   protocol: udp
-  up: 11 Mbps
-  down: 55 Mbps
+  up: 11 Mbps Mbps
+  down: 55 Mbps Mbps
+  password: dongtaiwang.com
+  udp: true
 - name: Y-DE-HYSTERIA-1
   type: hysteria
   server: 5.83.129.143
   port: 26691
-  auth-str: dongtaiwang.com
   sni: apple.com
   skip-cert-verify: true
   alpn:
   - h3
   protocol: udp
-  up: 11 Mbps
-  down: 55 Mbps
+  up: 11 Mbps Mbps
+  down: 55 Mbps Mbps
+  auth_str: dongtaiwang.com
+  udp: true
 - name: Y-UNK-HYSTERIA-1
   type: hysteria
   server: 2a14:7584:d099::a
   port: 26691
-  auth-str: dongtaiwang.com
   sni: apple.com
   skip-cert-verify: true
   alpn:
   - h3
   protocol: udp
-  up: 11 Mbps
-  down: 55 Mbps
+  up: 11 Mbps Mbps
+  down: 55 Mbps Mbps
+  auth_str: dongtaiwang.com
+  udp: true
 - name: Y-UNK-TUIC-1
   server: ip1.758733.xyz
   port: 10088
@@ -102,18 +186,20 @@ proxies:
   udp-relay-mode: native
   skip-cert-verify: true
   congestion-controller: bbr
+  udp: true
 - name: Y-UNK-HYSTERIA-2
   type: hysteria
   server: ip1.758733.xyz
   port: 23008
-  auth-str: alvin9999.com
   sni: apple.com
   skip-cert-verify: true
   alpn:
   - h3
   protocol: udp
-  up: 11 Mbps
-  down: 55 Mbps
+  up: 11 Mbps Mbps
+  down: 55 Mbps Mbps
+  auth_str: alvin9999.com
+  udp: true
 - name: Y-FR-VLESS-3
   type: vless
   server: 2001:bc8:32d7:181::3
@@ -138,6 +224,7 @@ proxies:
       enabled: true
       up: 50
       down: 100
+  skip-cert-verify: true
 - name: Y-FR-VLESS-4
   type: vless
   server: 2001:bc8:32d7:181::4
@@ -162,6 +249,7 @@ proxies:
       enabled: true
       up: 50
       down: 100
+  skip-cert-verify: true
 - name: Y-FR-VLESS-5
   type: vless
   server: 2001:bc8:32d7:181::5
@@ -186,6 +274,7 @@ proxies:
       enabled: true
       up: 50
       down: 100
+  skip-cert-verify: true
 - name: Y-FR-TUIC-1
   server: 163.172.116.154
   port: 33887
@@ -199,6 +288,7 @@ proxies:
   udp-relay-mode: native
   skip-cert-verify: true
   congestion-controller: bbr
+  udp: true
 - name: Y-US-Providence-TUIC-1
   server: 157.254.223.24
   port: 41122
@@ -212,6 +302,7 @@ proxies:
   udp-relay-mode: native
   skip-cert-verify: true
   congestion-controller: bbr
+  udp: true
 - name: Y-US-Providence-TUIC-1
   server: 157.254.223.48
   port: 11540
@@ -225,102 +316,17 @@ proxies:
   udp-relay-mode: native
   skip-cert-verify: true
   congestion-controller: bbr
+  udp: true
 - name: Y-UNK-HYSTERIA-1
   type: hysteria
   server: 2a14:7584:d097::a
   port: 54177
-  auth-str: dongtaiwang.com
   sni: apple.com
   skip-cert-verify: true
   alpn:
   - h3
   protocol: udp
-  up: 11 Mbps
-  down: 55 Mbps
-- name: Y-DE-HYSTERIA-1
-  type: hysteria
-  server: 5.83.129.153
-  port: 20088
-  password: dongtaiwang.com
-  auth-str: dongtaiwang.com
-  sni: apple.com
-  skip-cert-verify: true
-  alpn: h3
-  up: 100
-  down: 100
-- name: Y-US-Providence-HYSTERIA-1
-  type: hysteria
-  server: 157.254.223.44
-  port: 20833
-  password: dongtaiwang.com
-  auth-str: dongtaiwang.com
-  sni: apple.com
-  skip-cert-verify: true
-  alpn: h3
-  up: 100
-  down: 100
-- name: Y-DE-HYSTERIA-1
-  type: hysteria
-  server: 5.83.129.90
-  port: 54177
-  password: dongtaiwang.com
-  auth-str: dongtaiwang.com
-  sni: apple.com
-  skip-cert-verify: true
-  alpn: h3
-  up: 100
-  down: 100
-- name: Y-US-Providence-HYSTERIA2-1 (28000-29000)
-  type: hysteria2
-  server: 157.254.223.43
-  port: 27921
-  password: dongtaiwang.com
-  auth-str: dongtaiwang.com
-  sni: ''
-  skip-cert-verify: true
-  alpn: h3
-  ports: 28000-29000
-- name: Y-DE-Frankfurt am Main-HYSTERIA-1
-  type: hysteria
-  server: 2a10:3c80:0:f::2
-  port: 39463
-  password: VNws548Lj/fDRk58HE6dKAcTNpb8+iIk+ycqKEBNG/U=
-  auth-str: VNws548Lj/fDRk58HE6dKAcTNpb8+iIk+ycqKEBNG/U=
-  sni: ''
-  skip-cert-verify: true
-  alpn: h3
-  up: 100
-  down: 100
-- name: Y-FR-HYSTERIA-1
-  type: hysteria
-  server: 2001:bc8:32d7:17b::3
-  port: 22000
-  password: dongtaiwang.com
-  auth-str: dongtaiwang.com
-  sni: ''
-  skip-cert-verify: true
-  alpn: h3
-  up: 100
-  down: 100
-- name: Y-UNK-HYSTERIA-1
-  type: hysteria
-  server: fan.193919.xyz
-  port: 45889
-  password: dongtaiwang.com
-  auth-str: dongtaiwang.com
-  sni: fan.193919.xyz
-  skip-cert-verify: true
-  alpn: h3
-  up: 100
-  down: 100
-- name: Y-DE-HYSTERIA-1
-  type: hysteria
-  server: 5.83.129.153
-  port: 22222
-  password: dongtaiwang.com
-  auth-str: dongtaiwang.com
-  sni: bing.com
-  skip-cert-verify: true
-  alpn: h3
-  up: 100
-  down: 100
+  up: 11 Mbps Mbps
+  down: 55 Mbps Mbps
+  auth_str: dongtaiwang.com
+  udp: true
