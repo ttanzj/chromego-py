@@ -1,7 +1,7 @@
 # z系列 - 本人原总结的活跃源
 https://www.xrayvip.com/free.txt
-https://raw.githubusercontent.com/mfuu/v2ray/master/v2ray
-https://raw.githubusercontent.com/ssrsub/ssr/master/V2Ray
+#https://raw.githubusercontent.com/mfuu/v2ray/master/v2ray
+#https://raw.githubusercontent.com/ssrsub/ssr/master/V2Ray
 https://raw.githubusercontent.com/aiboboxx/v2rayfree/main/v2
 https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub
 https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.txt
