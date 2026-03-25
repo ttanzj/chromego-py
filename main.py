@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 """
-最终稳定版 - 按要求处理跳跃端口 + 加强 Hysteria1 参数提取
-Y系列 → sources.txt (前缀 Y-)
-Z系列 → sources-j.txt (前缀 Z-)
+最终修正版 - 自动判断 hysteria / hysteria2 + 正确处理跳跃端口
 """
 
 import yaml
@@ -105,16 +103,19 @@ def process_json(data, prefix):
         if 'server' in content or 'servers' in content:
             servers = content.get('server') or content.get('servers', [])
             if isinstance(servers, str): servers = [servers]
-            typ = "hysteria2" if "hysteria2" in str(content).lower() else "hysteria"
+            
+            # 自动判断：只要出现跳跃端口，就判定为 hysteria2
+            has_hop = any(',' in str(s) and '-' in str(s) for s in servers)
+            typ = "hysteria2" if has_hop or "hysteria2" in str(content).lower() else "hysteria"
             
             for i, s in enumerate(servers):
                 if not s: continue
                 server, main_port, ports_range = parse_server_port(s)
                 
                 if ports_range:
-                    # 有跳跃端口：按你的要求
-                    final_port = ports_range          # port = 跳跃范围
-                    final_ports = str(main_port)      # ports = 主端口
+                    # 有跳跃端口：port = 主端口, ports = 跳跃范围（推荐方式）
+                    final_port = main_port
+                    final_ports = ports_range
                     name_suffix = f" ({ports_range})"
                 else:
                     final_port = main_port
@@ -133,22 +134,19 @@ def process_json(data, prefix):
                     "alpn": content.get('alpn', 'h3')
                 }
                 
-                # Hysteria1 特有参数加强
+                if final_ports:
+                    p['ports'] = final_ports
+                
                 if typ == "hysteria":
                     p["up"] = content.get('upmbps') or content.get('up') or 100
                     p["down"] = content.get('downmbps') or content.get('down') or 100
-                    if not p.get("sni") and content.get('peer'):
-                        p["sni"] = content.get('peer')
-                
-                if final_ports:
-                    p['ports'] = final_ports
                 
                 fp = make_fingerprint(p)
                 if fp not in servers_list:
                     extracted_proxies.append(p)
                     servers_list.append(fp)
 
-        # outbounds 处理（保持最小改动）
+        # outbounds 处理保持不变
         for ob in content.get('outbounds', []):
             if not isinstance(ob, dict): continue
             proto = (ob.get('protocol') or ob.get('type') or '').lower()
