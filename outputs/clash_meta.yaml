@@ -313,7 +313,7 @@ proxies:
   alpn: h3
   up: 100
   down: 100
-- name: Z-GEN-VMESS-1-63ms
+- name: Z-GEN-VMESS-1-64ms
   type: vmess
   server: 82.198.246.97
   port: 180
@@ -325,7 +325,7 @@ proxies:
   network: tcp
   ws-opts: null
   sni: ''
-- name: Z-GEN-VMESS-2-528ms
+- name: Z-GEN-VMESS-2-868ms
   type: vmess
   server: v12.hdacd.com
   port: 30812
@@ -337,7 +337,7 @@ proxies:
   network: tcp
   ws-opts: null
   sni: t.me/ripaojiedian
-- name: Z-GEN-VMESS-4-733ms
+- name: Z-GEN-VMESS-4-707ms
   type: vmess
   server: v30.hdacd.com
   port: 30830
@@ -349,7 +349,7 @@ proxies:
   network: tcp
   ws-opts: null
   sni: ''
-- name: Z-GEN-VMESS-1-2ms
+- name: Z-GEN-VMESS-1-3ms
   type: vmess
   server: 188.114.96.3
   port: 443
@@ -364,21 +364,21 @@ proxies:
     headers:
       Host: sy4.620720.xyz
   sni: sy4.620720.xyz
-- name: Z-GEN-TROJAN-2-88ms
+- name: Z-GEN-TROJAN-2-85ms
   type: trojan
   server: 78.159.131.12
   port: 28259
   password: MeaDiUmPlkWbZJ2BON8tz
   sni: ads.x5.ru
   skip-cert-verify: true
-- name: Z-GEN-TROJAN-3-200ms
+- name: Z-GEN-TROJAN-3-207ms
   type: trojan
   server: 58.152.25.253
   port: 443
   password: BxceQaOe
   sni: t.me/ripaojiedian
   skip-cert-verify: true
-- name: Z-GEN-VMESS-4-84ms
+- name: Z-GEN-VMESS-4-15ms
   type: vmess
   server: c7.620720.xyz
   port: 8443
@@ -393,7 +393,7 @@ proxies:
     headers:
       Host: c7.620720.xyz
   sni: c7.620720.xyz
-- name: Z-GEN-VMESS-6-201ms
+- name: Z-GEN-VMESS-6-199ms
   type: vmess
   server: 8.223.63.189
   port: 443
@@ -408,7 +408,7 @@ proxies:
     headers:
       Host: ''
   sni: mn1ray.jagoanvip.xyz
-- name: Z-GEN-VMESS-7-533ms
+- name: Z-GEN-VMESS-7-221ms
   type: vmess
   server: v30.hdacd.com
   port: 30830
