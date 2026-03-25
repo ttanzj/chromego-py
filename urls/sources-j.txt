@@ -1,6 +1,8 @@
 # J系列 - Grok推荐的活跃源
 https://proxy.v2gh.com/https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub
 https://git.io/emzclash
-https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml
 https://raw.githubusercontent.com/mfuu/v2ray/master/clash.yaml
 https://raw.githubusercontent.com/barry-far/V2ray-config/main/All_Configs_Sub.txt
+https://raw.githubusercontent.com/PuddinCat/BestClash/refs/heads/main/proxies.yaml
+https://raw.githubusercontent.com/F0rc3Run/F0rc3Run/refs/heads/main/Best-Results/proxies.txt
+
