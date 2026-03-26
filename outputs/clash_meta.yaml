@@ -40,18 +40,6 @@ proxies:
   port: 443
   type: hysteria
   name: Y-US-Secaucus-HYSTERIA-5
-- name: Y-FR-HYSTERIA-1
-  type: hysteria
-  server: 2001:bc8:32d7:17b::2
-  port: 11000
-  auth-str: dongtaiwang.com
-  sni: apple.com
-  skip-cert-verify: true
-  alpn:
-  - h3
-  protocol: udp
-  up: 11 Mbps
-  down: 55 Mbps
 - name: Y-FR-TUIC-1
   server: 2001:bc8:32d7:302::16
   port: 34997
@@ -328,53 +316,4 @@ proxies:
 - server: 111.243.110.11
   port: 39263
   type: hysteria
-  name: Y-TW-Hsinchu-HYSTERIA-27
-- name: Z-GEN-VMESS-1-63ms
-  type: vmess
-  server: 82.198.246.97
-  port: 180
-  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-  alterId: '0'
-  cipher: auto
-  tls: false
-  skip-cert-verify: true
-  network: tcp
-  ws-opts: null
-  sni: ''
-- name: Z-GEN-VMESS-6-23ms
-  type: vmess
-  server: c7.620720.xyz
-  port: 8443
-  uuid: 516d8a7a-3f0b-41d3-bad0-246116381516
-  alterId: '0'
-  cipher: auto
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: c7.620720.xyz
-  sni: c7.620720.xyz
-- name: Z-GEN-TROJAN-8-128ms
-  type: trojan
-  server: top-goshawk.rooster465.autos
-  port: 443
-  password: WF42809561
-  sni: top-goshawk.rooster465.autos
-  skip-cert-verify: true
-- name: Z-GEN-VMESS-9-17ms
-  type: vmess
-  server: t1.620720.xyz
-  port: 8443
-  uuid: 516d8a7a-3f0b-41d3-bad0-246116381516
-  alterId: 0
-  cipher: auto
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: ''
-    headers:
-      Host: ''
-  sni: ''
+  name: Y-TW-Hsinchu-HYSTERIA-26
