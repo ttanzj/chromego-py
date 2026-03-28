@@ -208,10 +208,10 @@ proxies:
   port: 443
   type: hysteria
   name: US-Secaucus-HYSTERIA-19
-- server: 111.243.110.158
+- server: 111.243.108.240
   port: 39263
   type: hysteria
-  name: TW-Hsinchu-HYSTERIA-20
+  name: TW-Hsinchu County-HYSTERIA-20
 - name: UNK-HYSTERIA-1
   type: hysteria
   server: fan.193919.xyz
