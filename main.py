@@ -3,9 +3,10 @@
 """
 ChromeGo Enhanced v3.5 - 纯 Y 系列版
 - 其他提取逻辑完全不变
-- 仅增强去重逻辑：增加 sni 识别（避免 sni 不同但其他字段相同的节点被去重）
+- 仅增强去重逻辑：增加 sni 识别
 - 节点名称去除 "Y-" 前缀
-- 修复：hy1 节点 alpn 字段丢失问题（确保 alpn 为列表格式）
+- 修复：hy1 节点 alpn 丢失问题
+- 修复：vless 节点字段缺失导致无法使用的问题
 """
 import yaml
 import json
@@ -18,7 +19,6 @@ import re
 import base64
 import socket
 import time
-from urllib.parse import urlparse, parse_qs
 from pathlib import Path
 
 # ==================== 全局防卡死设置 ====================
@@ -52,26 +52,13 @@ def get_location(ip: str) -> str:
     except:
         return "UNK"
 
-# ====================== 【核心修改】增强版指纹去重 - 增加 sni 识别 ======================
+# ====================== 增强版指纹去重 ======================
 def make_fingerprint(p: dict) -> str:
-    """原逻辑基础上增加 sni 识别，避免 sni 不同但其他字段一致的节点被去重"""
+    """增加 sni 识别，避免误去重"""
     key = f"{p.get('server','')}|{p.get('port','')}|{p.get('type','')}|" \
           f"{p.get('uuid') or p.get('password') or p.get('auth-str','')}|" \
           f"{p.get('network','')}|{p.get('sni','')}|{p.get('servername','')}"
     return hashlib.md5(key.lower().encode()).hexdigest()
-
-def test_node_availability(proxy: dict, timeout: int = 8) -> tuple[bool, int]:
-    server = proxy.get('server')
-    port = int(proxy.get('port', 443))
-    if not server:
-        return False, 9999
-    try:
-        start = time.time()
-        with socket.create_connection((server, port), timeout=timeout):
-            delay = int((time.time() - start) * 1000)
-        return True, delay
-    except Exception:
-        return False, 9999
 
 def preprocess_subscription(data: str) -> str:
     """原版预处理逻辑，完全不变"""
@@ -89,7 +76,7 @@ def preprocess_subscription(data: str) -> str:
         return content
     return content
 
-# ====================== 原有核心处理函数（仅修复 hy1 alpn） ======================
+# ====================== 处理函数 ======================
 def process_file(file_path: str):
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -123,7 +110,6 @@ def process_clash(data: str):
             if fp in servers_list:
                 continue
            
-            # 只去除 "Y-" 前缀，其他命名逻辑完全保留
             original_name = p.get('name', '')
             if original_name.startswith('Y-'):
                 new_name = original_name[2:]
@@ -141,6 +127,8 @@ def process_clash(data: str):
 def process_json(data: str):
     try:
         content = json.loads(data)
+        
+        # ====================== Hysteria 系列处理 ======================
         if 'server' in content or 'servers' in content:
             servers = content.get('server') or content.get('servers', [])
             if isinstance(servers, str):
@@ -152,15 +140,13 @@ def process_json(data: str):
             for i, s in enumerate(servers):
                 if not s: continue
                 server, main_port, ports_range = parse_server_port(s)
-               
                 name_suffix = f" ({ports_range})" if ports_range else ""
                 
-                # ====================== 修复 hy1 alpn 问题 ======================
                 if typ == "hysteria":   # hy1
                     alpn = content.get('alpn')
                     if isinstance(alpn, str):
                         alpn = [alpn]
-                    elif alpn is None or alpn == "":
+                    elif not alpn:
                         alpn = ["h3"]
                     
                     p = {
@@ -197,22 +183,62 @@ def process_json(data: str):
                     extracted_proxies.append(p)
                     servers_list.append(fp)
 
+        # ====================== vless / vmess / trojan 等出站处理（重点修复） ======================
         for ob in content.get('outbounds', []):
-            if not isinstance(ob, dict): continue
+            if not isinstance(ob, dict): 
+                continue
             proto = (ob.get('protocol') or ob.get('type') or '').lower()
-            if proto not in ('vless', 'vmess', 'trojan', 'ss', 'hysteria', 'hysteria2'): continue
+            if proto not in ('vless', 'vmess', 'trojan', 'ss', 'hysteria', 'hysteria2'): 
+                continue
+                
             settings = ob.get('settings', ob)
             server = settings.get('address') or settings.get('server')
-            if not server: continue
+            if not server: 
+                continue
+                
             port = int(settings.get('port', 443))
-            p = {"server": server, "port": port, "type": proto}
+            
+            p = {
+                "name": f"{get_location(server)}-{proto.upper()}-{len(extracted_proxies)+1}",
+                "type": proto,
+                "server": server,
+                "port": port,
+            }
+            
             if proto == 'vless':
                 p['uuid'] = settings.get('users', [{}])[0].get('id')
-            p['name'] = f"{get_location(server)}-{proto.upper()}-{len(extracted_proxies)+1}"
+                p['flow'] = settings.get('flow', '')
+                p['network'] = settings.get('network', 'tcp')
+                security = settings.get('security', '')
+                p['tls'] = security in ('tls', 'reality')
+                p['sni'] = settings.get('serverName') or settings.get('sni') or ''
+                p['client-fingerprint'] = settings.get('fingerprint', 'chrome')
+                if security == 'reality':
+                    p['reality-opts'] = {
+                        "public-key": settings.get('publicKey', ''),
+                        "short-id": settings.get('shortId', '')
+                    }
+            
+            elif proto == 'vmess':
+                p['uuid'] = settings.get('users', [{}])[0].get('id')
+                p['alterId'] = settings.get('alterId', 0)
+                p['network'] = settings.get('network', 'tcp')
+                p['tls'] = settings.get('security') == 'tls'
+                p['sni'] = settings.get('serverName') or settings.get('sni') or ''
+            
+            elif proto == 'trojan':
+                p['password'] = settings.get('password')
+                p['sni'] = settings.get('serverName') or settings.get('sni') or ''
+                p['tls'] = True
+            
+            # 清理空值
+            p = {k: v for k, v in p.items() if v not in (None, "", {}, [])}
+            
             fp = make_fingerprint(p)
             if fp not in servers_list:
                 extracted_proxies.append(p)
                 servers_list.append(fp)
+                
     except Exception as e:
         logger.error(f"JSON 处理异常: {e}")
 
@@ -238,10 +264,9 @@ def parse_server_port(srv):
 # ====================== 主程序 ======================
 if __name__ == "__main__":
     os.makedirs("outputs", exist_ok=True)
-    logger.info("=== ChromeGo Enhanced v3.5 纯 Y 系列版启动（增强 sni 去重 + 去除 Y- 前缀 + hy1 alpn 修复） ===")
+    logger.info("=== ChromeGo Enhanced v3.5 纯 Y 系列版启动（vless 修复版） ===")
     process_file("urls/sources.txt")
     logger.info(f"最终共提取 {len(extracted_proxies)} 个节点")
     with open("outputs/clash_meta.yaml", "w", encoding="utf-8") as f:
         yaml.dump({"proxies": extracted_proxies}, f, allow_unicode=True, sort_keys=False)
-    logger.info("✅ 输出完成！")
-    logger.info(" 输出文件 → outputs/clash_meta.yaml")
+    logger.info("✅ 输出完成！输出文件 → outputs/clash_meta.yaml")
