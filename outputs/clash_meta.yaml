@@ -132,7 +132,8 @@ proxies:
   auth-str: dongtaiwang.com
   sni: apple.com
   skip-cert-verify: true
-  alpn: h3
+  alpn:
+  - h3
   up: 100
   down: 100
 - name: DE-HYSTERIA-1
@@ -143,7 +144,8 @@ proxies:
   auth-str: dongtaiwang.com
   sni: apple.com
   skip-cert-verify: true
-  alpn: h3
+  alpn:
+  - h3
   up: 100
   down: 100
 - name: FR-HYSTERIA-1
@@ -154,7 +156,8 @@ proxies:
   auth-str: dongtaiwang.com
   sni: ''
   skip-cert-verify: true
-  alpn: h3
+  alpn:
+  - h3
   up: 100
   down: 100
 - name: FR-HYSTERIA-1
@@ -165,7 +168,8 @@ proxies:
   auth-str: dongtaiwang.com
   sni: ''
   skip-cert-verify: true
-  alpn: h3
+  alpn:
+  - h3
   up: 100
   down: 100
 - name: US-Providence-HYSTERIA2-1 (28000-29000)
@@ -176,7 +180,8 @@ proxies:
   auth-str: dongtaiwang.com
   sni: ''
   skip-cert-verify: true
-  alpn: h3
+  alpn:
+  - h3
   ports: 28000-29000
 - name: DE-Frankfurt am Main-HYSTERIA-1
   type: hysteria
@@ -186,7 +191,8 @@ proxies:
   auth-str: VNws548Lj/fDRk58HE6dKAcTNpb8+iIk+ycqKEBNG/U=
   sni: ''
   skip-cert-verify: true
-  alpn: h3
+  alpn:
+  - h3
   up: 100
   down: 100
 - name: FR-HYSTERIA-1
@@ -197,7 +203,8 @@ proxies:
   auth-str: dongtaiwang.com
   sni: ''
   skip-cert-verify: true
-  alpn: h3
+  alpn:
+  - h3
   up: 100
   down: 100
 - server: 5.83.129.90
@@ -220,7 +227,8 @@ proxies:
   auth-str: dongtaiwang.com
   sni: fan.193919.xyz
   skip-cert-verify: true
-  alpn: h3
+  alpn:
+  - h3
   up: 100
   down: 100
 - name: DE-HYSTERIA-1
@@ -231,6 +239,7 @@ proxies:
   auth-str: dongtaiwang.com
   sni: bing.com
   skip-cert-verify: true
-  alpn: h3
+  alpn:
+  - h3
   up: 100
   down: 100
