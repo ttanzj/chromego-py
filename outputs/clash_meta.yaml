@@ -219,6 +219,9 @@ proxies:
   client-fingerprint: chrome
   alpn:
   - h3
+  reality-opts:
+    public-key: pHn5CHa2P6-lNBIkTOI3zJQN19jfNFkXxGFuyefpP0M
+    short-id: ''
 - name: US-Providence-VLESS-19
   type: vless
   server: 157.254.223.137
@@ -231,6 +234,9 @@ proxies:
   client-fingerprint: chrome
   alpn:
   - h3
+  reality-opts:
+    public-key: njrfRguP2WJFUtBH11bJTaIEfGIb28V7_Sahlhbldyw
+    short-id: 54ffd503
 - name: DE-VLESS-20
   type: vless
   server: 89.144.35.230
@@ -243,6 +249,9 @@ proxies:
   client-fingerprint: chrome
   alpn:
   - h3
+  reality-opts:
+    public-key: kfw5DgkyKiovC3dzb-o2PUYnZPnbYvbx2IwERUv9czY
+    short-id: 225e2cc8
 - name: UNK-VLESS-21
   type: vless
   server: 2a14:7584:d097::a
@@ -254,6 +263,9 @@ proxies:
   client-fingerprint: chrome
   alpn:
   - h3
+  reality-opts:
+    public-key: 3HaD5Ztk3X4gi3aJLVesV6KSJTW2YGG-hvGD3ZumJkE
+    short-id: fa789b2f5ff56959
 - name: UNK-HYSTERIA-1
   type: hysteria
   server: fan.193919.xyz
