@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 """
-ChromeGo Enhanced v3.5 - 纯 Y 系列版（仅增强 vless 支持）
+ChromeGo Enhanced v3.5 - 纯 Y 系列版（vless 字段完整加强版）
 - 其他提取逻辑完全不变
 - 仅增强去重逻辑：增加 sni 识别
 - 节点名称去除 "Y-" 前缀
 - 修复：hy1 节点 alpn 丢失问题
-- 新增：vless 节点提取支持（vless:// 直链 + Xray JSON）
+- 重点加强：vless 节点字段提取（header、path、host、alpn、ws-opts 等）
 """
 import yaml
 import json
@@ -21,7 +21,7 @@ import socket
 import time
 from urllib.parse import urlparse, parse_qs
 
-# ==================== 全局防卡死设置 ====================
+# ==================== 全局设置 ====================
 socket.setdefaulttimeout(15)
 urllib.request.socket.setdefaulttimeout(15)
 
@@ -32,8 +32,8 @@ logging.basicConfig(
 )
 logger = logging.getLogger("ChromeGo")
 
-servers_list: list[str] = []          # 全局去重指纹
-extracted_proxies: list[dict] = []    # 最终节点列表
+servers_list: list[str] = []
+extracted_proxies: list[dict] = []
 
 geo_reader = None
 try:
@@ -52,7 +52,6 @@ def get_location(ip: str) -> str:
     except:
         return "UNK"
 
-# ====================== 增强版指纹去重 ======================
 def make_fingerprint(p: dict) -> str:
     key = f"{p.get('server','')}|{p.get('port','')}|{p.get('type','')}|" \
           f"{p.get('uuid') or p.get('password') or p.get('auth-str','')}|" \
@@ -72,7 +71,7 @@ def preprocess_subscription(data: str) -> str:
         pass
     return content
 
-# ====================== 新增：vless:// 直链解析 ======================
+# ====================== vless:// 直链解析（保持） ======================
 def parse_vless_link(link: str) -> dict | None:
     try:
         if not link.startswith('vless://'):
@@ -104,7 +103,7 @@ def parse_vless_link(link: str) -> dict | None:
     except:
         return None
 
-# ====================== 原有核心处理函数（仅增加 vless 支持） ======================
+# ====================== 原有核心处理函数 ======================
 def process_file(file_path: str):
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -118,7 +117,7 @@ def process_file(file_path: str):
                 
                 processed_data = preprocess_subscription(raw_data)
 
-                # 新增：优先处理 vless:// 直链
+                # 处理 vless:// 直链
                 lines = [line.strip() for line in processed_data.splitlines() if line.strip()]
                 for line in lines:
                     if line.startswith('vless://'):
@@ -129,7 +128,7 @@ def process_file(file_path: str):
                                 extracted_proxies.append(proxy)
                                 servers_list.append(fp)
 
-                # 原有逻辑保持不变
+                # 原有逻辑完全不变
                 if url.endswith(('.yaml', '.yml')) or 'proxies:' in processed_data or 'proxy:' in processed_data:
                     process_clash(processed_data)
                 else:
@@ -153,6 +152,7 @@ def process_clash(data: str):
             if fp in servers_list:
                 continue
            
+            # 只去除 "Y-" 前缀，其他完全保留
             original_name = p.get('name', '')
             if original_name.startswith('Y-'):
                 new_name = original_name[2:]
@@ -171,7 +171,7 @@ def process_json(data: str):
     try:
         content = json.loads(data)
         
-        # 原有 hysteria 处理逻辑（完全不变）
+        # ==================== 原有 hysteria 处理（完全不变） ====================
         if 'server' in content or 'servers' in content:
             servers = content.get('server') or content.get('servers', [])
             if isinstance(servers, str):
@@ -225,7 +225,7 @@ def process_json(data: str):
                     extracted_proxies.append(p)
                     servers_list.append(fp)
 
-        # 新增：处理 Xray/V2Ray JSON 中的 vless 节点
+        # ==================== 单独加强 vless 处理 ====================
         for ob in content.get('outbounds', []):
             if not isinstance(ob, dict): continue
             proto = (ob.get('protocol') or ob.get('type') or '').lower()
@@ -239,8 +239,8 @@ def process_json(data: str):
             
             user = vnext.get('users', [{}])[0]
             stream = ob.get('streamSettings', {})
-            reality = stream.get('realitySettings', {})
-            
+            reality = stream.get('realitySettings', {}) or stream.get('tlsSettings', {})
+
             p = {
                 "name": f"{get_location(server)}-VLESS-{len(extracted_proxies)+1}",
                 "type": "vless",
@@ -249,17 +249,25 @@ def process_json(data: str):
                 "uuid": user.get('id'),
                 "flow": user.get('flow', ''),
                 "network": stream.get('network', 'tcp'),
-                "tls": stream.get('security') in ('tls', 'reality'),
-                "sni": reality.get('serverName') or stream.get('serverName', ''),
+                "tls": stream.get('security') in ('tls', 'reality', 'xtls'),
+                "sni": reality.get('serverName') or stream.get('serverName') or '',
                 "client-fingerprint": reality.get('fingerprint', 'chrome'),
+                "alpn": reality.get('alpn', ["h3"]),
             }
-            
-            if stream.get('security') == 'reality':
-                p['reality-opts'] = {
-                    "public-key": reality.get('publicKey', ''),
-                    "short-id": reality.get('shortId', '')
+
+            # 重点加强传输层配置
+            if stream.get('network') == 'ws':
+                ws = stream.get('wsSettings', {})
+                p['ws-opts'] = {
+                    "path": ws.get('path', '/'),
+                    "headers": ws.get('headers', {'Host': p.get('sni') or server})
                 }
-            
+            elif stream.get('network') == 'grpc':
+                p['grpc-opts'] = {"grpc-service-name": stream.get('grpcSettings', {}).get('serviceName', '')}
+            elif stream.get('network') == 'http':
+                p['http-opts'] = {"path": stream.get('httpSettings', {}).get('path', '/')}
+
+            # 清理空值
             p = {k: v for k, v in p.items() if v not in (None, '', {}, [])}
             
             fp = make_fingerprint(p)
@@ -292,7 +300,7 @@ def parse_server_port(srv):
 # ====================== 主程序 ======================
 if __name__ == "__main__":
     os.makedirs("outputs", exist_ok=True)
-    logger.info("=== ChromeGo Enhanced v3.5 纯 Y 系列版 + vless 增强版启动 ===")
+    logger.info("=== ChromeGo Enhanced v3.5 vless字段完整加强版启动 ===")
     process_file("urls/sources.txt")
     logger.info(f"最终共提取 {len(extracted_proxies)} 个节点")
     with open("outputs/clash_meta.yaml", "w", encoding="utf-8") as f:
