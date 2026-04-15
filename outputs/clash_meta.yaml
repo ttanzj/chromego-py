@@ -24,6 +24,18 @@ proxies:
   reduce-rtt: true
   udp-relay-mode: native
   congestion-controller: bbr
+- name: FR-HYSTERIA2-1
+  type: hysteria2
+  server: 2001:bc8:32d7:302::17
+  port: 20088
+  password: dongtaiwang.com
+  sni: apple.com
+  skip-cert-verify: true
+  alpn:
+  - h3
+  protocol: udp
+  up: 11 Mbps
+  down: 55 Mbps
 - name: UNK-TUIC-1
   server: ip1.758733.xyz
   port: 10088
@@ -148,6 +160,18 @@ proxies:
   - h3
   up: 100
   down: 100
+- name: FR-HYSTERIA-1
+  type: hysteria
+  server: 2001:bc8:32d7:302::11
+  port: 20088
+  password: dongtaiwang.com
+  auth-str: dongtaiwang.com
+  sni: ''
+  skip-cert-verify: true
+  alpn:
+  - h3
+  up: 100
+  down: 100
 - name: US-Providence-HYSTERIA2-1 (28000-29000)
   type: hysteria2
   server: 157.254.223.43
@@ -183,7 +207,7 @@ proxies:
   - h3
   up: 100
   down: 100
-- name: FR-VLESS-16
+- name: FR-VLESS-18
   type: vless
   server: 2001:bc8:32d7:302::13
   port: 34324
@@ -198,7 +222,7 @@ proxies:
   reality-opts:
     public-key: pHn5CHa2P6-lNBIkTOI3zJQN19jfNFkXxGFuyefpP0M
     short-id: ''
-- name: TW-New Taipei-VLESS-17
+- name: TW-New Taipei-VLESS-19
   type: vless
   server: 118.166.0.164
   port: 44965
@@ -213,7 +237,7 @@ proxies:
   reality-opts:
     public-key: z1_FVLAxN66t1373faq2D-BV8B7CyILrwc0vMiYw9Cc
     short-id: d3c7911a
-- name: US-Providence-VLESS-18
+- name: US-Providence-VLESS-20
   type: vless
   server: 157.254.223.137
   port: 24089
@@ -228,7 +252,7 @@ proxies:
   reality-opts:
     public-key: njrfRguP2WJFUtBH11bJTaIEfGIb28V7_Sahlhbldyw
     short-id: 54ffd503
-- name: DE-VLESS-19
+- name: DE-VLESS-21
   type: vless
   server: 89.144.35.230
   port: 54582
@@ -243,7 +267,7 @@ proxies:
   reality-opts:
     public-key: kfw5DgkyKiovC3dzb-o2PUYnZPnbYvbx2IwERUv9czY
     short-id: 225e2cc8
-- name: UNK-VLESS-20
+- name: UNK-VLESS-22
   type: vless
   server: 2a14:7584:d097::a
   port: 11330
