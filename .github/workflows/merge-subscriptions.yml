@@ -8,6 +8,8 @@ on:
 jobs:
   merge:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write     # 明确写权限
     
     steps:
       - name: 检出代码
@@ -21,29 +23,29 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: 创建输出目录
-        run: mkdir -p outputs
+      - name: 创建输出目录并执行合并
+        run: |
+          mkdir -p outputs
+          python merge_sources.py
 
-      - name: 执行合并脚本
-        run: python merge_sources.py
-
-      - name: 配置 Git 并智能提交
+      - name: 配置 Git 并推送更新
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # 先暂存脚本生成的更新
           git add outputs/merged_subscriptions.txt
           
-          # 检查是否有实际变化
           if git diff --staged --quiet; then
-            echo "📭 本次订阅内容无变化，跳过提交"
+            echo "📭 订阅内容无变化，跳过提交"
           else
-            echo "📤 检测到订阅更新，正在提交..."
+            echo "📤 检测到更新，正在提交..."
             
-            # 拉取最新代码并自动处理冲突（推荐方式）
-            git pull --rebase --autostash origin main
+            # 强力拉取最新代码
+            git fetch origin main
+            git rebase origin/main || git rebase --abort
             
             git commit -m "🔄 自动更新合并订阅文件 $(date '+%Y-%m-%d %H:%M:%S')"
-            git push
+            
+            # 使用 force-with-lease 安全推送（推荐用于生成文件）
+            git push --force-with-lease origin main
           fi
