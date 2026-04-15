@@ -2,6 +2,7 @@ import urllib.request
 import os
 import re
 from urllib.error import URLError, HTTPError
+from collections import defaultdict
 
 
 def fetch_url(url: str) -> str:
@@ -30,7 +31,6 @@ def extract_kernel_name(group_title: str) -> str:
     支持 Clash、Quick、Hysteria1/2、Sing-box、Xray、Juicity 等
     """
     title = group_title.lower().strip()
-
     # 名称映射表（优先匹配）
     kernel_map = {
         'clash': 'clash',
@@ -44,7 +44,7 @@ def extract_kernel_name(group_title: str) -> str:
         'hysteria 2': 'hysteria2',
         'hy2': 'hysteria2',
         'hysteria1': 'hysteria1',
-        'hysteria': 'hysteria1',   # 默认 Hysteria 分组视为 Hysteria1
+        'hysteria': 'hysteria1',
         'tuic': 'tuic',
         'trojan': 'trojan',
         'shadowsocks': 'shadowsocks',
@@ -56,12 +56,10 @@ def extract_kernel_name(group_title: str) -> str:
         'naive': 'naiveproxy',
         'shadowquic': 'shadowquic',
     }
-
     # 先用映射表精确匹配
     for key, kernel in kernel_map.items():
         if key in title:
             return kernel
-
     # 正则兜底匹配
     match = re.search(r'(clash|quick|sing-?box|v2ray|xray|hysteria2?|hy2?|hysteria1?|tuic|trojan|shadowsocks|ssr|juicity|mieru|naiveproxy|naive|shadowquic)', title)
     if match:
@@ -78,8 +76,7 @@ def extract_kernel_name(group_title: str) -> str:
         elif name in ('quick', 'juicity', 'mieru', 'naiveproxy', 'naive', 'shadowquic'):
             return name
         return name
-
-    # 最终兜底：取标题中第一个有意义的单词
+    # 最终兜底
     cleaned = re.sub(r'[^a-z0-9]', '', title.split()[0] if title else 'nodes')
     return cleaned or 'nodes'
 
@@ -96,7 +93,7 @@ def sanitize_filename(name: str) -> str:
 def main():
     input_file = "urls/sources.txt"
     output_dir = "outputs"
-    
+   
     if not os.path.exists(input_file):
         print(f"❌ 未找到 {input_file} 文件！")
         return
@@ -120,7 +117,7 @@ def main():
             current_group = None
             continue
         if current_group is None and stripped.startswith('#'):
-            current_group = line.rstrip()   # 保留原始标题
+            current_group = line.rstrip()  # 保留原始标题
             current_urls = []
         else:
             if stripped and not stripped.startswith('#'):
@@ -132,37 +129,66 @@ def main():
     print(f"✅ 共解析到 {len(groups)} 个分组，开始处理...\n")
 
     total = 0
-    kernel_count = {}   # 处理同名内核序号
+    kernel_count = {}                    # 处理同名内核序号
+    special_contents = defaultdict(str)  # 新增：用于收集 sing-box、quick、naiveproxy、juicity 的内容
 
     for group_id, urls in groups:
-        # 提取内核名作为文件名
+        # 提取内核名
         kernel_name = extract_kernel_name(group_id)
-        
+       
         # 处理同名文件序号
         kernel_count[kernel_name] = kernel_count.get(kernel_name, 0) + 1
         suffix = f"_{kernel_count[kernel_name]}" if kernel_count[kernel_name] > 1 else ""
-        
+       
         filename = sanitize_filename(kernel_name) + suffix
         output_file = os.path.join(output_dir, f"{filename}.txt")
 
-        print(f"📂 处理分组：{group_id} → {output_file}  (内核: {kernel_name})")
+        print(f"📂 处理分组：{group_id} → {output_file} (内核: {kernel_name})")
 
+        # 收集该分组的所有订阅内容
+        group_content = f"# =======================\n"
+        group_content += f"# 分组标题: {group_id}\n"
+        group_content += f"# 内核类型: {kernel_name}\n"
+        group_content += f"# 由 merge_sources.py 自动生成\n"
+        group_content += f"# =======================\n\n"
+
+        for url in urls:
+            print(f" ⬇️ 下载 → {url}")
+            content = fetch_url(url)
+            total += 1
+            group_content += content + "\n\n"
+
+        # 写入单个内核文件（原逻辑不变）
         with open(output_file, "w", encoding="utf-8") as out:
-            out.write(f"# =======================\n")
-            out.write(f"# 分组标题: {group_id}\n")
-            out.write(f"# 内核类型: {kernel_name}\n")
-            out.write(f"# 由 merge_sources.py 自动生成\n")
-            out.write(f"# =======================\n\n")
+            out.write(group_content)
 
-            for url in urls:
-                print(f"   ⬇️ 下载 → {url}")
-                content = fetch_url(url)
-                total += 1
-                out.write(content)
-                out.write("\n\n")
+        # 新增逻辑：收集需要合并到 s-q-n-j.txt 的内容
+        target_kernels = {'sing-box', 'quick', 'naiveproxy', 'juicity'}
+        if kernel_name in target_kernels:
+            special_contents[kernel_name] += group_content
+
+    # ==================== 新增：生成 s-q-n-j.txt ====================
+    sqnj_file = os.path.join(output_dir, "s-q-n-j.txt")
+    
+    with open(sqnj_file, "w", encoding="utf-8") as f:
+        f.write("# =======================\n")
+        f.write("# s-q-n-j 合并文件\n")
+        f.write("# 顺序：sing-box → quick → naiveproxy → juicity\n")
+        f.write("# 由 merge_sources.py 自动生成\n")
+        f.write("# =======================\n\n")
+
+        order = ['sing-box', 'quick', 'naiveproxy', 'juicity']
+        for kernel in order:
+            if special_contents[kernel]:
+                f.write(f"\n# ==================== {kernel.upper()} ====================\n\n")
+                f.write(special_contents[kernel])
+            else:
+                f.write(f"\n# ==================== {kernel.upper()} ====================\n")
+                f.write("# （无对应订阅内容）\n\n")
 
     print(f"\n🎉 全部完成！共处理 {total} 个订阅")
     print(f"📁 所有文件已保存至：{output_dir}/")
+    print(f"📄 额外生成合并文件：{sqnj_file}")
 
 
 if __name__ == "__main__":
