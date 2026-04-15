@@ -1,4 +1,4 @@
-# Clash Meta 配置（推荐主力，包含 Hysteria 节点）
+# Clash Meta 
 https://gitlab.com/free9999/ipupdate/-/raw/master/clash.meta2/config.yaml
 https://www.githubip.xyz/Alvin9999/pac2/master/clash.meta2/config.yaml
 https://www.gitlabip.xyz/Alvin9999/pac2/master/clash.meta2/13/config.yaml
@@ -17,7 +17,7 @@ https://www.gitlabip.xyz/Alvin9999/PAC/refs/heads/master/backup/img/1/2/ipp/clas
 https://www.gitlabip.xyz/Alvin9999/PAC/refs/heads/master/backup/img/1/2/ipp/clash.meta2/6/config.yaml
 https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/clash.meta2/6/config.yaml
 
-# Quick 配置（旧版快速 Clash 配置）
+# Quick 
 https://gitlab.com/free9999/ipupdate/-/raw/master/quick/3/config.yaml
 https://www.gitlabip.xyz/Alvin9999/pac2/master/quick/3/config.yaml
 https://www.gitlabip.xyz/Alvin9999/pac2/master/quick/1/config.yaml
@@ -25,7 +25,7 @@ https://gitlab.com/free9999/ipupdate/-/raw/master/quick/config.yaml
 https://www.githubip.xyz/Alvin9999/pac2/master/quick/config.yaml
 https://www.githubip.xyz/Alvin9999/pac2/master/quick/4/config.yaml
 
-# Hysteria1 配置（Hysteria 协议）
+# Hysteria1 
 https://www.gitlabip.xyz/Alvin9999/pac2/master/hysteria/1/config.json
 https://gitlab.com/free9999/ipupdate/-/raw/master/hysteria/config.json
 https://www.githubip.xyz/Alvin9999/pac2/master/hysteria/config.json
@@ -41,7 +41,7 @@ https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/hysteria/3/
 https://www.gitlabip.xyz/Alvin9999/PAC/refs/heads/master/backup/img/1/2/ipp/hysteria/4/config.json
 https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/hysteria/4/config.json
 
-# Hysteria2 配置（当前较稳定，推荐测试）
+# Hysteria2 
 https://www.gitlabip.xyz/Alvin9999/pac2/master/hysteria2/1/config.json
 https://gitlab.com/free9999/ipupdate/-/raw/master/hysteria2/config.json
 https://www.githubip.xyz/Alvin9999/pac2/master/hysteria2/config.json
@@ -57,7 +57,7 @@ https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/hysteria2/3
 https://www.gitlabip.xyz/Alvin9999/PAC/refs/heads/master/backup/img/1/2/ipp/hysteria2/4/config.json
 https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/hysteria2/4/config.json
 
-# Sing-box 配置
+# Sing-box 
 https://gitlab.com/free9999/ipupdate/-/raw/master/singbox/config.json
 https://www.githubip.xyz/Alvin9999/pac2/master/singbox/config.json
 https://www.gitlabip.xyz/Alvin9999/pac2/master/singbox/1/config.json
@@ -66,7 +66,7 @@ https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/singbox/1/c
 https://www.gitlabip.xyz/Alvin9999/PAC/refs/heads/master/backup/img/1/2/ip/singbox/2/config.json
 https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/singbox/2/config.json
 
-# Xray 配置
+# Xray 
 https://www.gitlabip.xyz/Alvin9999/pac2/master/xray/1/config.json
 https://gitlab.com/free9999/ipupdate/-/raw/master/xray/config.json
 https://www.githubip.xyz/Alvin9999/pac2/master/xray/config.json
@@ -82,25 +82,25 @@ https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/xray/3/conf
 https://www.gitlabip.xyz/Alvin9999/PAC/refs/heads/master/backup/img/1/2/ipp/xray/4/config.json
 https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/xray/4/config.json
 
-# Juicity 配置
+# Juicity 
 https://www.gitlabip.xyz/Alvin9999/PAC/refs/heads/master/backup/img/1/2/ipp/juicity/1/config.json
 https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/juicity/1/config.json
 https://www.gitlabip.xyz/Alvin9999/PAC/refs/heads/master/backup/img/1/2/ipp/juicity/2/config.json
 https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/juicity/2/config.json
 
-# Mieru 配置
+# Mieru 
 https://www.gitlabip.xyz/Alvin9999/PAC/refs/heads/master/backup/img/1/2/ipp/mieru/1/config.json
 https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/mieru/1/config.json
 https://www.gitlabip.xyz/Alvin9999/PAC/refs/heads/master/backup/img/1/2/ipp/mieru/2/config.json
 https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/mieru/2/config.json
 
-# Naiveproxy 配置
+# Naiveproxy
 https://www.gitlabip.xyz/Alvin9999/PAC/refs/heads/master/backup/img/1/2/ipp/naiveproxy/1/config.json
 https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/naiveproxy/1/config.json
 https://www.gitlabip.xyz/Alvin9999/PAC/refs/heads/master/backup/img/1/2/ipp/naiveproxy/2/config.json
 https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/naiveproxy/2/config.json
 
-# Shadowquic 配置
+# Shadowquic 
 https://www.gitlabip.xyz/Alvin9999/PAC/refs/heads/master/backup/img/1/2/ipp/shadowquic/1/client.yaml
 https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/shadowquic/1/client.yaml
 https://www.gitlabip.xyz/Alvin9999/PAC/refs/heads/master/backup/img/1/2/ipp/shadowquic/2/client.yaml
