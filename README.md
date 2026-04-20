@@ -1,11 +1,3 @@
-<div align="center">
-
-# ChromeGo Extractor
-
-A python script to extract ChromeGo Proxies
-
-一个用来提取ChromeGo代理节点的Python脚本
-
 
 > 鸣谢
 > - 感谢[linzjian666](https://github.com/linzjian666/chromego_extractor)项目是原始项目，Ai大幅改写
@@ -77,8 +69,3 @@ python main.py
 
 ---
 **欢迎提出问题或为本项目的开发做出贡献！**
-
-<!--
-## 统计
-![Star History Chart](https://api.star-history.com/svg?repos=linzjian666/chromego_extractor&type=Date)
--->
