@@ -1,6 +1,0 @@
-# z系列 - 本人原总结的活跃源
-https://www.xrayvip.com/free.txt
-https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub
-# === 2026 年 3 月高质量通用源（VLESS/VMess/Hysteria2 丰富）===
-https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/filtered/subs/vless.txt
-
