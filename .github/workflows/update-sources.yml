@@ -1,0 +1,55 @@
+name: 更新订阅地址 sources.txt
+
+on:
+  # 仅支持手动触发（workflow_dispatch），不会自动运行
+  workflow_dispatch:
+    inputs:
+      run_description:
+        description: '运行说明（可选）'
+        required: false
+        default: '手动更新 EdgeGo/ChromeGo/FirefoxFQ 中的订阅地址'
+        type: string
+
+jobs:
+  update-sources:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出仓库代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: 安装依赖（如果有需要可在此添加）
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: 运行 update_sources.py 更新 sources.txt
+        run: |
+          python update_sources.py
+
+      - name: 检查是否有文件变更
+        id: git-check
+        run: |
+          git diff --quiet HEAD -- urls/sources.txt || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: 提交并推送更新
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add urls/sources.txt
+          git commit -m "chore: 更新 sources.txt (手动触发)"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 完成提示
+        run: |
+          echo "✅ sources.txt 已成功更新并提交！"
