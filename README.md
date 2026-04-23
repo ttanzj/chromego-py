@@ -1,10 +1,3 @@
-|有|在一起|枯|
-|---|---|---|
-|槈|茜|茜|
-
-
-
-
 
 > 鸣谢
 > - 感谢[linzjian666](https://github.com/linzjian666/chromego_extractor)项目是原始项目，Ai大幅改写
