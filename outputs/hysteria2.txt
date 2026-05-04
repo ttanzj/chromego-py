@@ -117,14 +117,14 @@
 
 
 {
-  "server": "[2a10:3c80:0:f::2]:39463",
-  "auth": "VNws548Lj/fDRk58HE6dKAcTNpb8+iIk+ycqKEBNG/U=",
+  "server": "157.254.223.43:27921,28000-29000",
+  "auth": "dongtaiwang.com",
   "bandwidth": {
     "up": "11 mbps",
     "down": "55 mbps"
   },
   "tls": {
-    "sni": "www.microsoft.com",
+    "sni": "www.bing.com",
     "insecure": true
   },
   "quic": {
@@ -146,14 +146,14 @@
 
 
 {
-  "server": "[2a10:3c80:0:f::2]:39463",
-  "auth": "VNws548Lj/fDRk58HE6dKAcTNpb8+iIk+ycqKEBNG/U=",
+  "server": "157.254.223.43:27921,28000-29000",
+  "auth": "dongtaiwang.com",
   "bandwidth": {
     "up": "11 mbps",
     "down": "55 mbps"
   },
   "tls": {
-    "sni": "www.microsoft.com",
+    "sni": "www.bing.com",
     "insecure": true
   },
   "quic": {
@@ -171,6 +171,7 @@
     }
   }
 }
+
 
 
 {
