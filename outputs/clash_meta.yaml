@@ -83,12 +83,12 @@ proxies:
   udp-relay-mode: native
   skip-cert-verify: true
   congestion-controller: bbr
-- name: DE-TUIC-1
-  server: 178.18.147.199
-  port: 42487
+- name: FR-TUIC-1
+  server: 5.178.101.117
+  port: 30006
   type: tuic
-  uuid: b35b50d1-7830-4a68-94db-349c2d2f8e43
-  password: b35b50d1-7830-4a68-94db-349c2d2f8e43
+  uuid: 36106e0f-4d9a-470b-a3fd-535f3b7a1e92
+  password: dongtaiwang.com
   sni: www.microsoft.com
   alpn:
   - h3
@@ -103,19 +103,6 @@ proxies:
   uuid: 9adb384a-0f16-4501-a8f3-b6b2556fce87
   password: dongtaiwang.com
   sni: bing.com
-  alpn:
-  - h3
-  request-timeout: 8000
-  udp-relay-mode: native
-  skip-cert-verify: true
-  congestion-controller: bbr
-- name: FR-TUIC-1
-  server: 5.178.101.117
-  port: 30006
-  type: tuic
-  uuid: 36106e0f-4d9a-470b-a3fd-535f3b7a1e92
-  password: dongtaiwang.com
-  sni: www.microsoft.com
   alpn:
   - h3
   request-timeout: 8000
@@ -163,18 +150,6 @@ proxies:
   port: 22000
   password: dongtaiwang.com
   auth-str: dongtaiwang.com
-  sni: ''
-  skip-cert-verify: true
-  alpn:
-  - h3
-  up: 100
-  down: 100
-- name: DE-Frankfurt am Main-HYSTERIA-1
-  type: hysteria
-  server: 2a10:3c80:0:f::2
-  port: 39463
-  password: VNws548Lj/fDRk58HE6dKAcTNpb8+iIk+ycqKEBNG/U=
-  auth-str: VNws548Lj/fDRk58HE6dKAcTNpb8+iIk+ycqKEBNG/U=
   sni: ''
   skip-cert-verify: true
   alpn:
