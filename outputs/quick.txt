@@ -1,5 +1,5 @@
 # =======================
-# 分组标题: # Quick
+# 分组标题: # quick
 # 内核类型: quick
 # 由 merge_sources.py 自动生成
 # =======================
@@ -21,6 +21,189 @@ dns:
 proxies:
   - name: https://github.com/Alvin9999-newpac/fanqiang                     
     type: hysteria
+    server: 5.83.129.143
+    port: 26691
+    auth-str: dongtaiwang.com
+    sni: apple.com
+    skip-cert-verify: true
+    alpn:
+      - h3
+    protocol: udp
+    up: "11 Mbps"
+    down: "55 Mbps"
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - DIRECT
+      - https://github.com/Alvin9999-newpac/fanqiang
+  - name: ♻️ 自动选择
+    type: fallback              
+    url: "https://www.gstatic.com/generate_204"
+    interval: 5
+    proxies:
+      - https://github.com/Alvin9999-newpac/fanqiang
+  - name: 🌍 国外媒体
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🎯 全球直连
+      - https://github.com/Alvin9999-newpac/fanqiang
+  - name: 📲 电报信息
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - https://github.com/Alvin9999-newpac/fanqiang
+  - name: Ⓜ️ 微软服务
+    type: select
+    proxies:
+      - 🎯 全球直连
+      - 🚀 节点选择
+      - https://github.com/Alvin9999-newpac/fanqiang
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - https://github.com/Alvin9999-newpac/fanqiang
+  - name: 🎯 全球直连
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+      - ♻️ 自动选择
+  - name: 🛑 全球拦截
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: 🍃 应用净化
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - ♻️ 自动选择
+      - https://github.com/Alvin9999-newpac/fanqiang
+rules:
+  - MATCH,🚀 节点选择
+
+
+secret: dongtaiwang.com
+mixed-port: 7890
+allow-lan: false
+log-level: info
+dns:
+  enabled: true
+  nameserver:
+    - 119.29.29.29
+    - 223.5.5.5
+  fallback-filter:
+    geoip: false
+    ipcidr:
+      - 240.0.0.0/4
+      - 0.0.0.0/32
+proxies:
+  - name: https://github.com/Alvin9999-newpac/fanqiang                     
+    type: hysteria
+    server: 5.83.129.143
+    port: 26691
+    auth-str: dongtaiwang.com
+    sni: apple.com
+    skip-cert-verify: true
+    alpn:
+      - h3
+    protocol: udp
+    up: "11 Mbps"
+    down: "55 Mbps"
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - DIRECT
+      - https://github.com/Alvin9999-newpac/fanqiang
+  - name: ♻️ 自动选择
+    type: fallback              
+    url: "https://www.gstatic.com/generate_204"
+    interval: 5
+    proxies:
+      - https://github.com/Alvin9999-newpac/fanqiang
+  - name: 🌍 国外媒体
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🎯 全球直连
+      - https://github.com/Alvin9999-newpac/fanqiang
+  - name: 📲 电报信息
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - https://github.com/Alvin9999-newpac/fanqiang
+  - name: Ⓜ️ 微软服务
+    type: select
+    proxies:
+      - 🎯 全球直连
+      - 🚀 节点选择
+      - https://github.com/Alvin9999-newpac/fanqiang
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - https://github.com/Alvin9999-newpac/fanqiang
+  - name: 🎯 全球直连
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+      - ♻️ 自动选择
+  - name: 🛑 全球拦截
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: 🍃 应用净化
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - ♻️ 自动选择
+      - https://github.com/Alvin9999-newpac/fanqiang
+rules:
+  - MATCH,🚀 节点选择
+
+secret: dongtaiwang.com
+mixed-port: 7890
+allow-lan: false
+log-level: info
+dns:
+  enabled: true
+  nameserver:
+    - 119.29.29.29
+    - 223.5.5.5
+  fallback-filter:
+    geoip: false
+    ipcidr:
+      - 240.0.0.0/4
+      - 0.0.0.0/32
+proxies:
+  - name: https://github.com/Alvin9999-newpac/fanqiang                     
+    type: hysteria
     server: 2a14:7584:d099::a
     port: 26691
     auth-str: dongtaiwang.com
@@ -278,187 +461,7 @@ rules:
   - MATCH,🚀 节点选择
 
 
-secret: dongtaiwang.com
-mixed-port: 7890
-allow-lan: false
-log-level: info
-dns:
-  enabled: true
-  nameserver:
-    - 119.29.29.29
-    - 223.5.5.5
-  fallback-filter:
-    geoip: false
-    ipcidr:
-      - 240.0.0.0/4
-      - 0.0.0.0/32
-proxies:
-  - name: https://github.com/Alvin9999-newpac/fanqiang                     
-    type: hysteria
-    server: 5.83.129.143
-    port: 26691
-    auth-str: dongtaiwang.com
-    sni: apple.com
-    skip-cert-verify: true
-    alpn:
-      - h3
-    protocol: udp
-    up: "11 Mbps"
-    down: "55 Mbps"
-proxy-groups:
-  - name: 🚀 节点选择
-    type: select
-    proxies:
-      - ♻️ 自动选择
-      - DIRECT
-      - https://github.com/Alvin9999-newpac/fanqiang
-  - name: ♻️ 自动选择
-    type: fallback              
-    url: "https://www.gstatic.com/generate_204"
-    interval: 5
-    proxies:
-      - https://github.com/Alvin9999-newpac/fanqiang
-  - name: 🌍 国外媒体
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - ♻️ 自动选择
-      - 🎯 全球直连
-      - https://github.com/Alvin9999-newpac/fanqiang
-  - name: 📲 电报信息
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🎯 全球直连
-      - https://github.com/Alvin9999-newpac/fanqiang
-  - name: Ⓜ️ 微软服务
-    type: select
-    proxies:
-      - 🎯 全球直连
-      - 🚀 节点选择
-      - https://github.com/Alvin9999-newpac/fanqiang
-  - name: 🍎 苹果服务
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🎯 全球直连
-      - https://github.com/Alvin9999-newpac/fanqiang
-  - name: 🎯 全球直连
-    type: select
-    proxies:
-      - DIRECT
-      - 🚀 节点选择
-      - ♻️ 自动选择
-  - name: 🛑 全球拦截
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
-  - name: 🍃 应用净化
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
-  - name: 🐟 漏网之鱼
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🎯 全球直连
-      - ♻️ 自动选择
-      - https://github.com/Alvin9999-newpac/fanqiang
-rules:
-  - MATCH,🚀 节点选择
-
-secret: dongtaiwang.com
-mixed-port: 7890
-allow-lan: false
-log-level: info
-dns:
-  enabled: true
-  nameserver:
-    - 119.29.29.29
-    - 223.5.5.5
-  fallback-filter:
-    geoip: false
-    ipcidr:
-      - 240.0.0.0/4
-      - 0.0.0.0/32
-proxies:
-  - name: https://github.com/Alvin9999-newpac/fanqiang                     
-    type: hysteria
-    server: 5.83.129.143
-    port: 26691
-    auth-str: dongtaiwang.com
-    sni: apple.com
-    skip-cert-verify: true
-    alpn:
-      - h3
-    protocol: udp
-    up: "11 Mbps"
-    down: "55 Mbps"
-proxy-groups:
-  - name: 🚀 节点选择
-    type: select
-    proxies:
-      - ♻️ 自动选择
-      - DIRECT
-      - https://github.com/Alvin9999-newpac/fanqiang
-  - name: ♻️ 自动选择
-    type: fallback              
-    url: "https://www.gstatic.com/generate_204"
-    interval: 5
-    proxies:
-      - https://github.com/Alvin9999-newpac/fanqiang
-  - name: 🌍 国外媒体
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - ♻️ 自动选择
-      - 🎯 全球直连
-      - https://github.com/Alvin9999-newpac/fanqiang
-  - name: 📲 电报信息
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🎯 全球直连
-      - https://github.com/Alvin9999-newpac/fanqiang
-  - name: Ⓜ️ 微软服务
-    type: select
-    proxies:
-      - 🎯 全球直连
-      - 🚀 节点选择
-      - https://github.com/Alvin9999-newpac/fanqiang
-  - name: 🍎 苹果服务
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🎯 全球直连
-      - https://github.com/Alvin9999-newpac/fanqiang
-  - name: 🎯 全球直连
-    type: select
-    proxies:
-      - DIRECT
-      - 🚀 节点选择
-      - ♻️ 自动选择
-  - name: 🛑 全球拦截
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
-  - name: 🍃 应用净化
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
-  - name: 🐟 漏网之鱼
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🎯 全球直连
-      - ♻️ 自动选择
-      - https://github.com/Alvin9999-newpac/fanqiang
-rules:
-  - MATCH,🚀 节点选择
+# 【错误】无法访问 https://fastly.jsdelivr.net/gh/Alvin9999/pac2@latest/quick/config.yaml：HTTP Error 404: Not Found
 
 
 secret: dongtaiwang.com
@@ -551,4 +554,7 @@ proxy-groups:
       - https://github.com/Alvin9999-newpac/fanqiang
 rules:
   - MATCH,🚀 节点选择
+
+# 【错误】无法访问 https://fastly.jsdelivr.net/gh/Alvin9999/pac2@latest/quick/4/config.yaml：HTTP Error 404: Not Found
+
 
