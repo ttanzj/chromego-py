@@ -1,4 +1,4 @@
-
+[Nekobox更新地址]（https://github.com/MatsuriDayo/NekoBoxForAndroid）
 > 鸣谢
 > - 感谢[linzjian666](https://github.com/linzjian666/chromego_extractor)项目是原始项目，Ai大幅改写
 > - 感谢[ChromeGo](https://github.com/bannedbook/fanqiang)项目
