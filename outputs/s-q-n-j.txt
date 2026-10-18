@@ -745,19 +745,13 @@
 
 {
   "listen":  "socks://127.0.0.1:1080",
-  "proxy": "https://dongtaiwang.com:dongtaiwang.com@fan.193919.xyz:23001"
+  "proxy": "https://dongtaiwang.com:dongtaiwang.com@fan.193919.xyz:33556"
 }
 
 
 {
   "listen":  "socks://127.0.0.1:1080",
-  "proxy": "https://dongtaiwang.com:dongtaiwang.com@fan.193919.xyz:23001"
-}
-
-
-{
-  "listen":  "socks://127.0.0.1:1080",
-  "proxy": "https://dongtaiwang.com:dongtaiwang.com@hk.336892.xyz:33550"
+  "proxy": "https://dongtaiwang.com:dongtaiwang.com@fan.193919.xyz:33556"
 }
 
 
@@ -769,7 +763,13 @@
 
 {
   "listen":  "socks://127.0.0.1:1080",
-  "proxy": "https://dongtaiwang.com:dongtaiwang.com@fan.193919.xyz:23001"
+  "proxy": "https://dongtaiwang.com:dongtaiwang.com@hk.336892.xyz:33550"
+}
+
+
+{
+  "listen":  "socks://127.0.0.1:1080",
+  "proxy": "https://dongtaiwang.com:dongtaiwang.com@fan.193919.xyz:33556"
 }
 
 
@@ -789,9 +789,9 @@
 
 {
   "listen": "127.0.0.1:1080",
-    "server": "fan.193919.xyz:22001",
-    "uuid": "b5ed1193-4ae4-25a1-9a91-15bfc5dc728c",
-    "password": "github.com/Alvin9999-newpac/fanqiang",
+    "server": "fan.193919.xyz:55443",
+    "uuid": "61ff217d-59bc-43d2-8ac4-312e695a17dd",
+    "password": "dongtaiwang.com",
     "sni": "fan.193919.xyz",
     "allow_insecure": true,
     "congestion_control": "bbr",
@@ -802,14 +802,16 @@
 
 {
   "listen": "127.0.0.1:1080",
-    "server": "fan.193919.xyz:22001",
-    "uuid": "b5ed1193-4ae4-25a1-9a91-15bfc5dc728c",
-    "password": "github.com/Alvin9999-newpac/fanqiang",
+    "server": "fan.193919.xyz:55443",
+    "uuid": "61ff217d-59bc-43d2-8ac4-312e695a17dd",
+    "password": "dongtaiwang.com",
     "sni": "fan.193919.xyz",
     "allow_insecure": true,
     "congestion_control": "bbr",
     "log_level": "info"
 }
+
+
 
 {
   "listen": "127.0.0.1:1080",
@@ -838,14 +840,16 @@
 
 {
   "listen": "127.0.0.1:1080",
-    "server": "fan.193919.xyz:22001",
-    "uuid": "b5ed1193-4ae4-25a1-9a91-15bfc5dc728c",
-    "password": "github.com/Alvin9999-newpac/fanqiang",
+    "server": "fan.193919.xyz:55443",
+    "uuid": "61ff217d-59bc-43d2-8ac4-312e695a17dd",
+    "password": "dongtaiwang.com",
     "sni": "fan.193919.xyz",
     "allow_insecure": true,
     "congestion_control": "bbr",
     "log_level": "info"
 }
+
+
 
 {
   "listen": "127.0.0.1:1080",
