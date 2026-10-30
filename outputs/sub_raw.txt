@@ -1,7 +1,7 @@
 vless://a289c660-1b12-432b-a06c-c2ae469272b0@[2001:bc8:32d7:302::14]:37783?encryption=none&type=xhttp&security=reality&sni=www.yahoo.com&pbk=tQeEamJmYVUUfjRLX7ETvMnPj4DrHzRhR5TI684oYgg&sid=21569dd6#%F0%9F%87%AB%F0%9F%87%B7%20FR-VLESS-1
 hysteria://[2a14:7584:d097::a]:54177?upmbps=11&downmbps=55&auth=dongtaiwang.com&insecure=1&peer=apple.com&alpn=h3#%F0%9F%8C%90%20UNK-HYSTERIA-2
 hysteria://62.210.70.191:23556?upmbps=11&downmbps=55&auth=github.com/Alvin9999-newpac/fanqiang&insecure=1&peer=bing.com&alpn=h3#%F0%9F%87%AB%F0%9F%87%B7%20FR-HYSTERIA-3
-hysteria://62.210.70.191:24667?upmbps=11&downmbps=55&auth=dongtaiwang.com&insecure=1&peer=bing.com&alpn=h3#%F0%9F%87%AB%F0%9F%87%B7%20FR-HYSTERIA-4
+hysteria://62.210.28.175:24667?upmbps=11&downmbps=55&auth=dongtaiwang.com&insecure=1&peer=bing.com&alpn=h3#%F0%9F%87%AB%F0%9F%87%B7%20FR-HYSTERIA-4
 hysteria://163.172.117.163:36699?upmbps=11&downmbps=55&auth=dongtaiwang.com&insecure=1&peer=bing.com&alpn=h3#%F0%9F%87%AB%F0%9F%87%B7%20FR-HYSTERIA-5
 hysteria://5.83.129.90:54177?upmbps=11&downmbps=55&auth=dongtaiwang.com&insecure=1&peer=apple.com&alpn=h3#%F0%9F%87%A9%F0%9F%87%AA%20DE-HYSTERIA-6
 hysteria://137.175.82.44:443?upmbps=11&downmbps=55&auth=dongtaiwang.com&insecure=1&peer=bing.com&alpn=h3#%F0%9F%87%BA%F0%9F%87%B8%20US-HYSTERIA-7
