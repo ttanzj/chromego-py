@@ -815,10 +815,10 @@
 
 {
   "listen": "127.0.0.1:1080",
-    "server": "142.249.37.83:22222",
-    "uuid": "4b230023-d64a-4231-b5ca-c38a4546a5d0",
+    "server": "142.249.37.83:33333",
+    "uuid": "f5f56dba-feed-8d33-f7c7-a4a9be410a56",
     "password": "dongtaiwang.com",
-    "sni": "www.bing.com",
+    "sni": "bing.com",
     "allow_insecure": true,
     "congestion_control": "bbr",
     "log_level": "info"
@@ -828,14 +828,15 @@
 
 {
   "listen": "127.0.0.1:1080",
-    "server": "142.249.37.83:22222",
-    "uuid": "4b230023-d64a-4231-b5ca-c38a4546a5d0",
+    "server": "142.249.37.83:33333",
+    "uuid": "f5f56dba-feed-8d33-f7c7-a4a9be410a56",
     "password": "dongtaiwang.com",
-    "sni": "www.bing.com",
+    "sni": "bing.com",
     "allow_insecure": true,
     "congestion_control": "bbr",
     "log_level": "info"
 }
+
 
 
 {
@@ -853,13 +854,14 @@
 
 {
   "listen": "127.0.0.1:1080",
-    "server": "142.249.37.83:22222",
-    "uuid": "4b230023-d64a-4231-b5ca-c38a4546a5d0",
+    "server": "142.249.37.83:33333",
+    "uuid": "f5f56dba-feed-8d33-f7c7-a4a9be410a56",
     "password": "dongtaiwang.com",
-    "sni": "www.bing.com",
+    "sni": "bing.com",
     "allow_insecure": true,
     "congestion_control": "bbr",
     "log_level": "info"
 }
+
 
 
