@@ -647,7 +647,7 @@ dns:
 proxies:
   - name: https://github.com/Alvin9999-newpac/fanqiang
     type: hysteria
-    server: 62.210.70.191
+    server: 62.210.28.175
     port: 24667
     auth-str: dongtaiwang.com
     sni: bing.com
@@ -739,7 +739,7 @@ dns:
 proxies:
   - name: https://github.com/Alvin9999-newpac/fanqiang
     type: hysteria
-    server: 62.210.70.191
+    server: 62.210.28.175
     port: 24667
     auth-str: dongtaiwang.com
     sni: bing.com
@@ -1619,7 +1619,7 @@ dns:
 proxies:
   - name: https://github.com/Alvin9999-newpac/fanqiang
     type: hysteria
-    server: 62.210.70.191
+    server: 62.210.28.175
     port: 24667
     auth-str: dongtaiwang.com
     sni: bing.com
