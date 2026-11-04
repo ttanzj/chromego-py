@@ -126,14 +126,7 @@ proxies:
   username: dongtaiwang.com
   password: dongtaiwang.com
   tls: true
-- name: 🌐 UNK-NAIVE-12
-  type: http
-  server: hk.336892.xyz
-  port: 33550
-  username: dongtaiwang.com
-  password: dongtaiwang.com
-  tls: true
-- name: 🇩🇪 DE-HYSTERIA-13
+- name: 🇩🇪 DE-HYSTERIA-12
   type: hysteria
   server: 5.83.129.143
   port: 26691
@@ -145,7 +138,7 @@ proxies:
   protocol: udp
   up: 11 Mbps
   down: 55 Mbps
-- name: 🌐 UNK-HYSTERIA-14
+- name: 🌐 UNK-HYSTERIA-13
   type: hysteria
   server: 2a14:7584:d099::a
   port: 26691
@@ -157,7 +150,7 @@ proxies:
   protocol: udp
   up: 11 Mbps
   down: 55 Mbps
-- name: 🇫🇷 FR-HYSTERIA-15
+- name: 🇫🇷 FR-HYSTERIA-14
   type: hysteria
   server: 2001:bc8:32d7:17b::2
   port: 11000
@@ -169,7 +162,7 @@ proxies:
   - h3
   up: 11
   down: 55
-- name: 🇫🇷 FR-HYSTERIA2-16
+- name: 🇫🇷 FR-HYSTERIA2-15
   type: hysteria2
   server: 2001:bc8:32d7:17b::8
   port: 22000
@@ -179,7 +172,7 @@ proxies:
   skip-cert-verify: true
   alpn:
   - h3
-- name: 🇫🇷 FR-VLESS-17
+- name: 🇫🇷 FR-VLESS-16
   type: vless
   server: 2001:bc8:32d7:302::13
   port: 34324
@@ -193,7 +186,7 @@ proxies:
   reality-opts:
     public-key: pHn5CHa2P6-lNBIkTOI3zJQN19jfNFkXxGFuyefpP0M
     short-id: ''
-- name: 🇫🇷 FR-TUIC-18
+- name: 🇫🇷 FR-TUIC-17
   server: 2001:bc8:32d7:302::16
   port: 34997
   type: tuic
@@ -206,7 +199,7 @@ proxies:
   reduce-rtt: true
   udp-relay-mode: native
   congestion-controller: bbr
-- name: 🌐 UNK-NAIVE-19
+- name: 🌐 UNK-NAIVE-18
   type: http
   server: naive1.336892.xyz
   port: 22338
