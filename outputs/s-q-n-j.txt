@@ -470,16 +470,9 @@
   "proxy": "https://dongtaiwang.com:dongtaiwang.com@fan.193919.xyz:33556"
 }
 
-
 {
   "listen":  "socks://127.0.0.1:1080",
-  "proxy": "https://dongtaiwang.com:dongtaiwang.com@hk.336892.xyz:33550"
-}
-
-
-{
-  "listen":  "socks://127.0.0.1:1080",
-  "proxy": "https://dongtaiwang.com:dongtaiwang.com@hk.336892.xyz:33550"
+  "proxy": "https://dongtaiwang.com:dongtaiwang.com@fan.193919.xyz:33556"
 }
 
 
@@ -491,7 +484,13 @@
 
 {
   "listen":  "socks://127.0.0.1:1080",
-  "proxy": "https://dongtaiwang.com:dongtaiwang.com@hk.336892.xyz:33550"
+  "proxy": "https://dongtaiwang.com:dongtaiwang.com@fan.193919.xyz:33556"
+}
+
+
+{
+  "listen":  "socks://127.0.0.1:1080",
+  "proxy": "https://dongtaiwang.com:dongtaiwang.com@fan.193919.xyz:33556"
 }
 
 
