@@ -433,76 +433,7 @@
   }
 }
 
-{
-  "log": { "loglevel": "warning" },
-  "dns": {
-    "hosts": {
-      "dns.google":                        ["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"],
-      "dns.alidns.com":                    ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"],
-      "one.one.one.one":                   ["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],
-      "1dot1dot1dot1.cloudflare-dns.com":  ["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],
-      "cloudflare-dns.com":                ["104.16.249.249","104.16.248.249","2606:4700::6810:f8f9","2606:4700::6810:f9f9"],
-      "dns.cloudflare.com":                ["104.16.132.229","104.16.133.229","2606:4700::6810:84e5","2606:4700::6810:85e5"],
-      "dot.pub":                           ["1.12.12.12","120.53.53.53"],
-      "doh.pub":                           ["1.12.12.12","120.53.53.53"],
-      "dns.quad9.net":                     ["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"],
-      "dns.umbrella.com":                  ["208.67.220.220","208.67.222.222","2620:119:35::35","2620:119:53::53"],
-      "engage.cloudflareclient.com":       ["162.159.192.1","2606:4700:d0::a29f:c001"]
-    },
-    "servers": [
-      { "address": "https://dns.alidns.com/dns-query", "domains": ["geosite:private"], "skipFallback": true },
-      { "address": "223.5.5.5", "domains": ["full:dns.alidns.com","full:cloudflare-dns.com"], "skipFallback": true },
-      "https://cloudflare-dns.com/dns-query"
-    ]
-  },
-  "inbounds": [
-    {
-      "tag": "socks",
-      "port": 1080,
-      "listen": "127.0.0.1",
-      "protocol": "socks",
-      "sniffing": { "enabled": true, "destOverride": ["http","tls"], "routeOnly": false },
-      "settings": { "auth": "noauth", "udp": true }
-    },
-    {
-      "tag": "http",
-      "port": 1081,
-      "listen": "127.0.0.1",
-      "protocol": "http",
-      "sniffing": { "enabled": true, "destOverride": ["http","tls"], "routeOnly": false },
-      "settings": { "auth": "noauth" }
-    }
-  ],
-  "outbounds": [
-    {
-      "tag": "proxy",
-      "protocol": "vless",
-      "settings": {
-        "vnext": [{
-          "address": "2001:bc8:32d7:302::14",
-          "port": 37783,
-          "users": [{ "id": "a289c660-1b12-432b-a06c-c2ae469272b0", "encryption": "mlkem768x25519plus.native.0rtt.I5ge5qOTUhKE8xpufKI84yktvqqG9qkViwYe20uFZUyGwbnK7QMv6Tih0subInSmZTyem1QFG1CDFvGfgMBu3Yw1ryNJfGjMnALAqZawBoukaROcTzxXmFAzuejDalyhxxfNJkeUefW3biOHIzcu_AairYSvJ8l_iHJpKVEKXZWPQWiq-tm_nPJz_oDDhFElaCHKnCslodSen2M6afQQ0HYKc6nKZmZwc1cHG1GKW9xHx6CBfLhFVOhT62tCvbxShul1NJgL-shELnovAtS1aHBFQKDOIiJYC7Ww0awUfsyGIFhnJIhdnqFHnkG7sOcdiWiH-ZkQ11p065zAWEQ14HTOi-aqCAsnWNwdRxwj1_qlArYd3nNF1dXKARRikbMFutC5GyyvSJxk7XwHRGWoK_q6_zK2amtIrsin6tov5kKs3UqywFJMJ2rMtgYZXpvK_TdXumLGUimIq9vFW7idpbMlv9F84NY8UbtrkyB87IQwdKqbtnuOMzxkYik-i9N5vaKcXLSdOGRpMgAKSMt5NbSyllcEh6qUTZoVb_h8ZmYij8csvbGWxodCj1WvOGoRtGGnTSpWMdG3X3ZxXlhNQ6tpIPGTfxkzjPtRjHQDcqm0fgrLjWONnkGxMQRO-Wi50vzNPzW9Vuy5BlZszdGqpjLNRLGw24JTAYKXpxiUkTxUxhO3LRC8kMvGVBgxjImwmwev1IqfPiVIMSwhV0FAMNw27nALh0qyPnNLbFpbTFuTL6V83YypFDl1yahns_AE86ufKnSAaSs_0PwMM_ZDfkhE7nRKCygaD9UjWWygRWq6fZarZahcTAqrZUYPXWxqDsrE7VRYO3ch70AHi6ZXTyKR1YcyM0Kiw3S0kxpjbtWReOJ3lXwry-BjcusDKhRsAxErDIBD6IFuY5ucRTtpfPoNgiq7rSFG8SFNvTe-_wh39Bwjj3JeRnw6kzujiKgxGiAH9GYm6LVvG2ljdWacJjSyoDE6mbFwgRCGdDh4h6eMCPs7hjQmNByx76lb0PYt-BuD9xCfiEFMoKJzTjWUvOy1gbmOrjY5xtkkByo8PCS40YRqXiYQ0Me9U5t_lsdxrvO6f7ajFHBNp_IiQOAstWu9UKC2hiABnVWbHaTFeQSp0tAx9rm5vehC0_a3EAHByGzGFUQ-QWpUO5mvGzZKpPVQrgovg2GsgepxgOMymOgv2CbLNKiwAJJyjDe5d5yXiueH3ZdppJqepXrOGuGOn3e-8RKVu3I-nCp-aMS769Yl5mmS8BYOpxW3HseSzZZMIta4hjsa7hqSgmycflvLV5x-8bM9iBFZ7iOey9oYyEkEbFN-6-Alh2dQfopjE2QNFqW6KatBKHXKHNVoayoc4ZegDKPNAEnAo9wIHkBpDFC-fVoCkGMDcRSeNbF67keruuE0xfMA8ltaklEyRwMcxVQwMhILq6vKlzpJF9OJMGVg5amP_-i4NAsKEfC8Ayp61gByykoWKTWkuLAEAYtXXNIfQ9BPvZca1BITgpC69lapO4SH1UAZ4KRxOTVtbHES_GsjM_lkTv940p3IDkG7jfvxIfY_Q9C3QVbkilRpPvg" }]
-        }]
-      },
-      "streamSettings": {
-        "network": "xhttp",
-        "security": "reality",
-        "realitySettings": { "serverName": "www.yahoo.com", "fingerprint": "chrome", "publicKey": "tQeEamJmYVUUfjRLX7ETvMnPj4DrHzRhR5TI684oYgg", "shortId": "21569dd6" },
-        "xhttpSettings": { "path": "/OCrp5Ajs", "mode": "auto" }
-      }
-    },
-    { "tag": "direct", "protocol": "freedom" },
-    { "tag": "block",  "protocol": "blackhole" }
-  ],
-  "routing": {
-    "domainStrategy": "AsIs",
-    "rules": [
-      { "type": "field", "outboundTag": "block",  "ip":     ["geoip:private"] },
-      { "type": "field", "outboundTag": "direct", "domain": ["geosite:private"] },
-      { "type": "field", "outboundTag": "proxy",  "port":   "0-65535" }
-    ]
-  }
-}
+# 【错误】无法访问 https://gitlab.com/free9999/ipupdate/-/raw/master/backup/img/1/2/ipp/xray/2/config.json：<urlopen error [Errno 104] Connection reset by peer>
 
 
 {
