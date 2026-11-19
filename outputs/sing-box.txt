@@ -87,7 +87,7 @@
         "tag": "proxy-dns",
         "type": "https",
         "server": "1.1.1.1",
-        "detour": "Alvin9999-newpac"
+        "detour": "https://alvin9999.com"
       },
       {
         "tag": "local-dns",
@@ -109,8 +109,8 @@
   "outbounds": [
     {
       "type": "hysteria",
-      "tag": "Alvin9999-newpac",
-      "server": "137.175.82.43",
+      "tag": "https://alvin9999.com",
+      "server": "137.175.82.42",
       "server_port": 20022,
       "up_mbps": 20,
       "down_mbps": 20,
@@ -144,7 +144,7 @@
     ],
     "default_domain_resolver": "local-dns",
     "auto_detect_interface": true,
-    "final": "Alvin9999-newpac"
+    "final": "https://alvin9999.com"
   }
 }
 
@@ -231,7 +231,7 @@
         "tag": "proxy-dns",
         "type": "https",
         "server": "1.1.1.1",
-        "detour": "Alvin9999-newpac"
+        "detour": "https://alvin9999.com"
       },
       {
         "tag": "local-dns",
@@ -253,8 +253,8 @@
   "outbounds": [
     {
       "type": "hysteria",
-      "tag": "Alvin9999-newpac",
-      "server": "137.175.82.43",
+      "tag": "https://alvin9999.com",
+      "server": "137.175.82.42",
       "server_port": 20022,
       "up_mbps": 20,
       "down_mbps": 20,
@@ -288,7 +288,7 @@
     ],
     "default_domain_resolver": "local-dns",
     "auto_detect_interface": true,
-    "final": "Alvin9999-newpac"
+    "final": "https://alvin9999.com"
   }
 }
 
@@ -303,7 +303,7 @@
         "tag": "proxy-dns",
         "type": "https",
         "server": "1.1.1.1",
-        "detour": "Alvin9999-newpac"
+        "detour": "https://alvin9999.com"
       },
       {
         "tag": "local-dns",
@@ -325,8 +325,8 @@
   "outbounds": [
     {
       "type": "hysteria",
-      "tag": "Alvin9999-newpac",
-      "server": "137.175.82.43",
+      "tag": "https://alvin9999.com",
+      "server": "137.175.82.42",
       "server_port": 20022,
       "up_mbps": 20,
       "down_mbps": 20,
@@ -360,7 +360,7 @@
     ],
     "default_domain_resolver": "local-dns",
     "auto_detect_interface": true,
-    "final": "Alvin9999-newpac"
+    "final": "https://alvin9999.com"
   }
 }
 
@@ -375,7 +375,7 @@
         "tag": "proxy-dns",
         "type": "https",
         "server": "1.1.1.1",
-        "detour": "Alvin9999-newpac"
+        "detour": "https://alvin9999.com"
       },
       {
         "tag": "local-dns",
@@ -397,8 +397,8 @@
   "outbounds": [
     {
       "type": "hysteria",
-      "tag": "Alvin9999-newpac",
-      "server": "137.175.82.43",
+      "tag": "https://alvin9999.com",
+      "server": "137.175.82.42",
       "server_port": 20022,
       "up_mbps": 20,
       "down_mbps": 20,
@@ -432,7 +432,7 @@
     ],
     "default_domain_resolver": "local-dns",
     "auto_detect_interface": true,
-    "final": "Alvin9999-newpac"
+    "final": "https://alvin9999.com"
   }
 }
 
