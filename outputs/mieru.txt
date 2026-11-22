@@ -4,23 +4,21 @@
 # 由 merge_sources.py 自动生成
 # =======================
 
-
-
 {
     "profiles": [
         {
             "profileName": "default",
             "user": {
-                "name": "Alvin9999-newpac",
-                "password": "github.com/Alvin9999-newpac/fanqiang"
+                "name": "alvin9999.com",
+                "password": "alvin9999.com"
             },
             "servers": [
                 {
-                    "ipAddress": "198.200.57.152",
+                    "ipAddress": "198.200.57.141",
                     "domainName": "",
                     "portBindings": [
                         {
-                            "port": 33556,
+                            "port": 55334,
                             "protocol": "TCP"
                         }
                     ]
@@ -36,25 +34,21 @@
 }
 
 
-
-
-
-
 {
     "profiles": [
         {
             "profileName": "default",
             "user": {
-                "name": "Alvin9999-newpac",
-                "password": "github.com/Alvin9999-newpac/fanqiang"
+                "name": "alvin9999.com",
+                "password": "alvin9999.com"
             },
             "servers": [
                 {
-                    "ipAddress": "198.200.57.152",
+                    "ipAddress": "198.200.57.141",
                     "domainName": "",
                     "portBindings": [
                         {
-                            "port": 33556,
+                            "port": 55334,
                             "protocol": "TCP"
                         }
                     ]
@@ -70,25 +64,21 @@
 }
 
 
-
-
-
-
 {
     "profiles": [
         {
             "profileName": "default",
             "user": {
-                "name": "Alvin9999-newpac",
-                "password": "github.com/Alvin9999-newpac/fanqiang"
+                "name": "alvin9999.com",
+                "password": "alvin9999.com"
             },
             "servers": [
                 {
-                    "ipAddress": "198.200.57.152",
+                    "ipAddress": "198.200.57.141",
                     "domainName": "",
                     "portBindings": [
                         {
-                            "port": 33556,
+                            "port": 55334,
                             "protocol": "TCP"
                         }
                     ]
@@ -104,24 +94,21 @@
 }
 
 
-
-
-
 {
     "profiles": [
         {
             "profileName": "default",
             "user": {
-                "name": "Alvin9999-newpac",
-                "password": "github.com/Alvin9999-newpac/fanqiang"
+                "name": "alvin9999.com",
+                "password": "alvin9999.com"
             },
             "servers": [
                 {
-                    "ipAddress": "198.200.57.152",
+                    "ipAddress": "198.200.57.141",
                     "domainName": "",
                     "portBindings": [
                         {
-                            "port": 33556,
+                            "port": 55334,
                             "protocol": "TCP"
                         }
                     ]
@@ -137,25 +124,21 @@
 }
 
 
-
-
-
-
 {
     "profiles": [
         {
             "profileName": "default",
             "user": {
-                "name": "Alvin9999-newpac",
-                "password": "github.com/Alvin9999-newpac/fanqiang"
+                "name": "alvin9999.com",
+                "password": "alvin9999.com"
             },
             "servers": [
                 {
-                    "ipAddress": "198.200.57.152",
+                    "ipAddress": "198.200.57.141",
                     "domainName": "",
                     "portBindings": [
                         {
-                            "port": 33556,
+                            "port": 55334,
                             "protocol": "TCP"
                         }
                     ]
@@ -171,25 +154,21 @@
 }
 
 
-
-
-
-
 {
     "profiles": [
         {
             "profileName": "default",
             "user": {
-                "name": "Alvin9999-newpac",
-                "password": "github.com/Alvin9999-newpac/fanqiang"
+                "name": "alvin9999.com",
+                "password": "alvin9999.com"
             },
             "servers": [
                 {
-                    "ipAddress": "198.200.57.152",
+                    "ipAddress": "198.200.57.141",
                     "domainName": "",
                     "portBindings": [
                         {
-                            "port": 33556,
+                            "port": 55334,
                             "protocol": "TCP"
                         }
                     ]
@@ -203,7 +182,5 @@
     "socks5Port": 3080,
     "loggingLevel": "INFO"
 }
-
-
 
 

@@ -10,10 +10,10 @@ inbound:
 
 outbound:
   type: shadowquic
-  addr: "198.2.214.27:22448"
+  addr: "198.247.0.165:25443"
   username: "dongtaiwang.com"
   password: "dongtaiwang.com"
-  server-name: "www.bing.com"
+  server-name: "www.yahoo.com"
   alpn: ["h3"]
   initial-mtu: 1300
   congestion-control: bbr
@@ -31,28 +31,7 @@ inbound:
 
 outbound:
   type: shadowquic
-  addr: "198.2.214.27:22448"
-  username: "dongtaiwang.com"
-  password: "dongtaiwang.com"
-  server-name: "www.bing.com"
-  alpn: ["h3"]
-  initial-mtu: 1300
-  congestion-control: bbr
-  zero-rtt: true
-  over-stream: false
-
-log-level: "info"
-
-
-
-
-inbound:
-  type: socks
-  bind-addr: "127.0.0.1:4080"
-
-outbound:
-  type: shadowquic
-  addr: "142.249.37.83:52889"
+  addr: "198.247.0.165:25443"
   username: "dongtaiwang.com"
   password: "dongtaiwang.com"
   server-name: "www.yahoo.com"
@@ -94,10 +73,31 @@ inbound:
 
 outbound:
   type: shadowquic
-  addr: "198.2.214.27:22448"
+  addr: "142.249.37.83:52889"
   username: "dongtaiwang.com"
   password: "dongtaiwang.com"
-  server-name: "www.bing.com"
+  server-name: "www.yahoo.com"
+  alpn: ["h3"]
+  initial-mtu: 1300
+  congestion-control: bbr
+  zero-rtt: true
+  over-stream: false
+
+log-level: "info"
+
+
+
+
+inbound:
+  type: socks
+  bind-addr: "127.0.0.1:4080"
+
+outbound:
+  type: shadowquic
+  addr: "198.247.0.165:25443"
+  username: "dongtaiwang.com"
+  password: "dongtaiwang.com"
+  server-name: "www.yahoo.com"
   alpn: ["h3"]
   initial-mtu: 1300
   congestion-control: bbr
